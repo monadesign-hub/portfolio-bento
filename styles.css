@@ -67,9 +67,9 @@ body {
 .mono { font-family: ui-monospace, "SF Mono", "JetBrains Mono", monospace; }
 
 .stage {
-  max-width: 1180px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 28px 24px 120px;
+  padding: 28px 32px 120px;
   min-height: 100vh;
   position: relative;
   z-index: 1;
@@ -224,7 +224,7 @@ body {
 
 /* ---------- globe ---------- */
 .card--globe { display: flex; flex-direction: column; align-items: center; }
-.globe { width: 100%; flex: 1; max-height: 220px; }
+.globe { width: 100%; max-width: 220px; aspect-ratio: 1 / 1; height: auto; margin: auto; }
 .globe-city {
   font-size: 13px; color: var(--muted); letter-spacing: .02em;
   margin-top: -6px;
@@ -281,7 +281,7 @@ body {
 
 /* ---------- clock ---------- */
 .card--clock { display: flex; flex-direction: column; align-items: center; }
-.clock { width: 100%; flex: 1; max-height: 180px; }
+.clock { width: 100%; max-width: 190px; aspect-ratio: 1 / 1; height: auto; margin: auto; }
 
 /* ---------- stats ---------- */
 .card--stats { }
