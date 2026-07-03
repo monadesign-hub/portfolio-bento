@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mona Wang — Product Design Engineer</title>
+  <meta name="description" content="Mona Wang — Product Design Engineer designing & shipping AI-native fintech products." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ambient aurora so the glass has color to refract -->
+  <div class="bg-aurora" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+    <span class="bg-grain"></span>
+  </div>
+
+  <!-- SVG displacement filter — optional edge-refraction (Chromium) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="glass-refract" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.012" numOctaves="2" seed="7" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="1.4" result="blurred"/>
+      <feDisplacementMap in="SourceGraphic" in2="blurred" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <main class="stage">
+    <!-- ============ DASHBOARD VIEW ============ -->
+    <section class="view view--dashboard is-active" id="view-dashboard" aria-label="Dashboard">
+      <div class="bento">
+
+        <!-- INTRO -->
+        <article class="card card--intro" style="--c:6; --r:3;">
+          <header class="intro-top">
+            <span class="avatar" aria-hidden="true"></span>
+            <div>
+              <div class="intro-name">Mona Wang</div>
+              <div class="intro-role">Product Design Engineer</div>
+            </div>
+          </header>
+          <h1 class="intro-line">I design &amp; ship <span class="tw" id="typewriter">AI-native products</span><span class="caret" aria-hidden="true"></span></h1>
+          <p class="intro-blurb">I bring fintech &amp; AI products to life end-to-end — from research and systems to full-stack vibe-coding. I push boundaries, take risks, and infuse narrative into the work.</p>
+          <footer class="intro-foot">
+            <span id="today">—</span>
+            <span class="mono" id="intro-clock">--:--:--</span>
+          </footer>
+        </article>
+
+        <!-- GLOBE -->
+        <article class="card card--globe" style="--c:3; --r:3;">
+          <span class="card-label">Based in</span>
+          <canvas class="globe" id="globe" width="360" height="360" aria-hidden="true"></canvas>
+          <div class="globe-city" id="globe-city">San Francisco</div>
+        </article>
+
+        <!-- CONTACT -->
+        <article class="card card--contact" style="--c:3; --r:5;">
+          <div class="contact-reveal" aria-hidden="true"></div>
+          <header class="contact-head">
+            <span class="card-label">Contact</span>
+            <span class="arrow">↗</span>
+          </header>
+          <ul class="contact-list">
+            <li><span>Email</span><a href="mailto:cw3378@tc.columbia.edu">Copy</a></li>
+            <li><span>Phone</span><a href="tel:+13128682306">(312) 868-2306</a></li>
+            <li><span>Résumé</span><a href="#">View ↗</a></li>
+            <li><span>Location</span><em>SF Bay Area</em></li>
+          </ul>
+          <nav class="contact-social" aria-label="Social">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">gh</a>
+            <a href="#" aria-label="X">x</a>
+          </nav>
+        </article>
+
+        <!-- LOGOTYPE / MOODBOARD -->
+        <article class="card card--logo" style="--c:4; --r:3;">
+          <span class="card-label">Moodboard</span>
+          <div class="logotype" aria-hidden="true">mona</div>
+          <p class="logo-caption">Love crafting,<br/>and crave creating even more.</p>
+        </article>
+
+        <!-- CLOCK -->
+        <article class="card card--clock" style="--c:2; --r:3;">
+          <span class="card-label">Local time</span>
+          <canvas class="clock" id="clock" width="220" height="220" aria-hidden="true"></canvas>
+        </article>
+
+        <!-- STATS -->
+        <article class="card card--stats" style="--c:3; --r:3;">
+          <span class="card-label">Some statistics</span>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-num" data-count="150" data-suffix="%">0%</div><div class="stat-cap">Underwriting efficiency</div></div>
+            <div class="stat"><div class="stat-num" data-count="2" data-suffix="M+">0</div><div class="stat-cap">Global audience</div></div>
+            <div class="stat"><div class="stat-num" data-count="20" data-suffix="+">0</div><div class="stat-cap">Design seminars led</div></div>
+            <div class="stat"><div class="stat-num" data-count="6" data-suffix="">0</div><div class="stat-cap">Shipped products</div></div>
+          </div>
+        </article>
+
+        <!-- RADAR -->
+        <article class="card card--radar" style="--c:3; --r:3;">
+          <span class="card-label">Skill graph</span>
+          <svg class="radar" id="radar" viewBox="-22 -6 244 218" aria-hidden="true"></svg>
+        </article>
+
+        <!-- MODE SWITCH -->
+        <article class="card card--mode" style="--c:2; --r:2;">
+          <span class="card-label">Mode</span>
+          <button class="mode-toggle" id="mode-toggle" aria-label="Toggle light / dark mode">
+            <span class="mode-orb"></span>
+          </button>
+        </article>
+
+        <!-- NOW / BUILDING -->
+        <article class="card card--now" style="--c:4; --r:2;">
+          <span class="card-label">Now building</span>
+          <div class="now-body">
+            <span class="pulse" aria-hidden="true"></span>
+            <div>
+              <div class="now-title">Aria — AI Underwriting Agent</div>
+              <div class="now-sub">Multi-agent loan underwriting · React + Claude</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CLIENTS -->
+        <article class="card card--clients" style="--c:6; --r:2;">
+          <span class="card-label">Trusted by</span>
+          <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+              <span>BMO</span><span>Nationwide</span><span>BNY</span><span>Harvard</span><span>MoMA</span><span>Columbia</span>
+              <span>BMO</span><span>Nationwide</span><span>BNY</span><span>Harvard</span><span>MoMA</span><span>Columbia</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ WORK VIEW ============ -->
+    <section class="view view--work" id="view-work" aria-label="Selected work" hidden>
+      <div class="work-head">
+        <h2 class="work-title">Selected work<span>(s)</span></h2>
+        <div class="filters" id="filters">
+          <button class="pill is-active" data-filter="all">All <b>6</b></button>
+          <button class="pill" data-filter="ai">AI Product <b>2</b></button>
+          <button class="pill" data-filter="fintech">Fintech <b>2</b></button>
+          <button class="pill" data-filter="creative">Creative <b>2</b></button>
+        </div>
+      </div>
+      <div class="work-grid" id="work-grid">
+        <a class="work-card work-card--hero" data-cat="ai" style="--g:6; --h:2;">
+          <div class="wc-media" data-shade="a"></div>
+          <div class="wc-meta"><div class="wc-title">Aria — AI Loan Underwriting</div><div class="wc-tag">AI Product · Multi-agent · Full-stack</div></div>
+        </a>
+        <a class="work-card" data-cat="fintech" style="--g:3; --h:2;">
+          <div class="wc-media" data-shade="b"></div>
+          <div class="wc-meta"><div class="wc-title">People &amp; Entities</div><div class="wc-tag">Fintech · Design System</div></div>
+        </a>
+        <a class="work-card" data-cat="ai" style="--g:3; --h:1;">
+          <div class="wc-media" data-shade="c"></div>
+          <div class="wc-meta"><div class="wc-title">Field Notes</div><div class="wc-tag">AI · Editorial engine</div></div>
+        </a>
+        <a class="work-card" data-cat="fintech" style="--g:3; --h:1;">
+          <div class="wc-media" data-shade="d"></div>
+          <div class="wc-meta"><div class="wc-title">Lending Platform</div><div class="wc-tag">Fintech · Enterprise</div></div>
+        </a>
+        <a class="work-card" data-cat="creative" style="--g:3; --h:2;">
+          <div class="wc-media" data-shade="e"></div>
+          <div class="wc-meta"><div class="wc-title">Harvard Art Museum</div><div class="wc-tag">Creative · Immersive</div></div>
+        </a>
+        <a class="work-card" data-cat="creative" style="--g:3; --h:1;">
+          <div class="wc-media" data-shade="f"></div>
+          <div class="wc-meta"><div class="wc-title">MoMA Art Guide</div><div class="wc-tag">Creative · Product</div></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ DOCK ============ -->
+    <nav class="dock" aria-label="View switch">
+      <button class="seg is-active" data-view="dashboard">Dashboard</button>
+      <button class="seg" data-view="work">Work</button>
+    </nav>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
