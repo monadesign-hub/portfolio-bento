@@ -231,11 +231,7 @@ body {
 
 /* ---------- globe ---------- */
 .card--globe { display: flex; flex-direction: column; align-items: center; }
-.globe {
-  width: 100%; max-width: 220px; aspect-ratio: 1 / 1; height: auto; margin: auto;
-  filter: drop-shadow(0 0 13px color-mix(in srgb, var(--accent) 48%, transparent))
-          drop-shadow(0 0 34px color-mix(in srgb, var(--accent-3) 38%, transparent));
-}
+.globe { width: 100%; max-width: 220px; aspect-ratio: 1 / 1; height: auto; margin: auto; }
 .globe-city {
   font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: .02em;
   margin-top: -6px;

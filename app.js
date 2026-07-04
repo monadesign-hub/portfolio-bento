@@ -104,18 +104,21 @@
     }
 
     function frame() {
-      const w = cv.width, h = cv.height, R = Math.min(w, h) * 0.44, cx = w / 2, cy = h / 2;
+      const w = cv.width, h = cv.height, R = Math.min(w, h) * 0.42, cx = w / 2, cy = h / 2;
       ctx.clearRect(0, 0, w, h);
       if (!reduce) rot += 0.0022;
       const cosR = Math.cos(rot), sinR = Math.sin(rot);
       const dark = document.documentElement.dataset.theme === "dark";
       const base = dark ? "255,255,255" : "24,24,28";
 
-      // atmosphere glow
-      const glow = ctx.createRadialGradient(cx, cy, R * 0.72, cx, cy, R * 1.06);
-      glow.addColorStop(0, "rgba(120,150,255,0)");
-      glow.addColorStop(1, dark ? "rgba(120,150,255,0.10)" : "rgba(90,120,220,0.08)");
-      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(cx, cy, R * 1.06, 0, 7); ctx.fill();
+      // outer glow halo — radiates OUTSIDE the sphere, fading to the card
+      const outerR = Math.min(w, h) * 0.5;
+      const halo = ctx.createRadialGradient(cx, cy, R * 0.92, cx, cy, outerR);
+      halo.addColorStop(0, "rgba(117,168,255,0)");
+      halo.addColorStop(0.32, dark ? "rgba(117,168,255,0.26)" : "rgba(117,168,255,0.16)");
+      halo.addColorStop(0.66, dark ? "rgba(158,140,255,0.15)" : "rgba(158,140,255,0.10)");
+      halo.addColorStop(1, "rgba(158,140,255,0)");
+      ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(cx, cy, outerR, 0, 7); ctx.fill();
 
       // graticule (front hemisphere only)
       ctx.lineWidth = 1;
