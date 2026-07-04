@@ -372,10 +372,18 @@ body {
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); margin-top: 12px; }
 .marquee-track { display: flex; align-items: center; gap: 52px; width: max-content; animation: marquee 30s linear infinite; }
 .marquee-track .logo {
-  height: 26px; width: auto; flex: none; object-fit: contain;
-  filter: brightness(0) invert(1);       /* uniform white */
-  opacity: .62; transition: opacity .3s;
+  width: auto; flex: none; object-fit: contain;
+  filter: brightness(0) invert(1);       /* mono white (dark theme) */
+  opacity: .66; transition: opacity .3s;
 }
+/* optically balanced heights — equal visual weight, not equal pixels */
+.marquee-track .logo[alt="Google"]     { height: 21px; }
+.marquee-track .logo[alt="Harvard"]    { height: 30px; }
+.marquee-track .logo[alt="BMO"]        { height: 27px; }
+.marquee-track .logo[alt="BNY"]        { height: 19px; }
+.marquee-track .logo[alt="Nationwide"] { height: 26px; }
+.marquee-track .logo[alt="TD Bank"]    { height: 31px; }
+.marquee-track .logo[alt="Supernova"]  { height: 19px; }
 :root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .5; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track .logo:hover { opacity: 1; }
