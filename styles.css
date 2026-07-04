@@ -518,11 +518,22 @@ body {
 .work-feature {
   display: block; position: relative;
   border-radius: var(--radius); overflow: hidden;
-  border: 1px solid var(--line); background: var(--card);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur)) saturate(180%); -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
   text-decoration: none; color: inherit;
-  transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
+  transition: transform .5s var(--spring), box-shadow .5s var(--ease);
 }
-.work-feature:hover { transform: translateY(-4px); border-color: var(--line-hi); box-shadow: 0 30px 60px -28px rgba(0,0,0,.6); }
+/* iOS liquid-glass specular edge stroke */
+.work-feature::before, .work-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  padding: 1px; pointer-events: none; z-index: 4;
+  background: linear-gradient(135deg, var(--glass-spec) 0%, transparent 30%, transparent 68%, color-mix(in srgb, var(--glass-spec) 48%, transparent) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.work-feature:hover { transform: translateY(-5px); box-shadow: var(--shadow), 0 34px 66px -30px rgba(0,0,0,.65); }
 .wf-img { display: block; width: 100%; height: auto; }   /* natural 16:9, never cropped */
 .wf-meta { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 16px 22px; }
 .wf-title { font-weight: 600; font-size: 16px; }
@@ -538,10 +549,12 @@ body {
 .work-card {
   grid-column: span var(--g, 3); grid-row: span var(--h, 1);
   border-radius: var(--radius); overflow: hidden; position: relative;
-  border: 1px solid var(--line); background: var(--card); cursor: pointer;
+  border: 1px solid var(--glass-border); background: var(--glass-bg); cursor: pointer;
+  backdrop-filter: blur(var(--blur)) saturate(180%); -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  box-shadow: var(--shadow);
   text-decoration: none; color: inherit;
   display: flex; flex-direction: column;
-  transition: transform .45s var(--ease), opacity .45s var(--ease), filter .45s var(--ease), border-color .45s;
+  transition: transform .45s var(--ease), opacity .45s var(--ease), filter .45s var(--ease), box-shadow .45s;
 }
 .wc-media { flex: 1; position: relative; overflow: hidden; }
 .wc-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .6s var(--ease); }
