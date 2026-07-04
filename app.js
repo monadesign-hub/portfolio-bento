@@ -161,6 +161,7 @@
   (function counters() {
     const nums = $$(".stat-num");
     const run = (el) => {
+      if (el.dataset.count == null) return;              // static value (e.g. a year) — leave as-is
       const target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || "";
       if (reduce) { el.textContent = target + suffix; return; }
       const dur = 1200, t0 = performance.now();
