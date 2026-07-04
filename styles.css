@@ -294,14 +294,19 @@ body {
   /* soft vignette so the image edges dissolve into the card */
   -webkit-mask: radial-gradient(125% 120% at 50% 44%, #000 52%, transparent 100%);
           mask: radial-gradient(125% 120% at 50% 44%, #000 52%, transparent 100%);
-  transition: opacity .5s var(--ease), transform 6s var(--ease);
+  transition: opacity .5s var(--ease);
+  animation: floraBloom 16s ease-in-out infinite;   /* living, looping bloom */
 }
+@keyframes floraBloom {
+  0%, 100% { transform: scale(1.04) rotate(-0.7deg); }
+  50%      { transform: scale(1.11) rotate(1deg); }
+}
+.card--flora:hover .flora { animation-duration: 8s; }   /* quicken on hover */
 /* dark bloom: desaturate + dim + screen-blend so its dark bg melts into the card */
 .flora--dark { filter: saturate(.72) brightness(.92); mix-blend-mode: screen; }
 .flora--light { opacity: 0; }
 :root[data-theme="light"] .flora--dark { opacity: 0; }
 :root[data-theme="light"] .flora--light { opacity: 1; }
-.card--flora:hover .flora { transform: scale(1.05); }
 
 /* ---------- stats ---------- */
 .card--stats { display: flex; flex-direction: column; }
@@ -331,6 +336,14 @@ body {
 .venn-core { animation: vennCore 7s ease-in-out infinite; }
 @keyframes vennBreath { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
 @keyframes vennCore { 0%, 100% { opacity: .55; r: 2.2px; } 50% { opacity: 1; r: 2.8px; } }
+/* fluid, moving color blooms — each drifts on its own phase */
+.venn-glow circle { transform-box: fill-box; transform-origin: center; }
+.venn-glow circle:nth-of-type(1) { animation: floraDriftA 11s ease-in-out infinite; }
+.venn-glow circle:nth-of-type(2) { animation: floraDriftB 14s ease-in-out infinite; }
+.venn-glow circle:nth-of-type(3) { animation: floraDriftC 12s ease-in-out infinite; }
+@keyframes floraDriftA { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(5px,-4px) scale(1.06); } 66% { transform: translate(-4px,3px) scale(.97); } }
+@keyframes floraDriftB { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-5px,-3px) scale(1.05); } 66% { transform: translate(4px,5px) scale(.96); } }
+@keyframes floraDriftC { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(4px,5px) scale(1.07); } 66% { transform: translate(-5px,-2px) scale(1); } }
 .roles-legend { list-style: none; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 10px; width: 100%; }
 .roles-legend li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; flex: 1 1 0; min-width: 0; }
 .roles-legend .dot {
@@ -380,18 +393,33 @@ body {
 :root[data-theme="light"] .mode-ic--sun  { opacity: 0; }
 
 /* ---------- now building ---------- */
-.card--now { display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit; cursor: pointer; }
+.card--now { display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-decoration: none; color: inherit; cursor: pointer; }
 .card--now .card-label { position: absolute; top: 18px; left: 18px; z-index: 3; }
+/* drifting gradient aurora inside the card */
+.card--now .now-aurora {
+  position: absolute; inset: 0; z-index: 0; border-radius: inherit; overflow: hidden;
+  pointer-events: none; opacity: .5; transition: opacity .5s var(--ease);
+  background:
+    radial-gradient(38% 62% at 22% 42%, color-mix(in srgb, var(--accent) 36%, transparent), transparent 72%),
+    radial-gradient(42% 56% at 78% 62%, color-mix(in srgb, var(--accent-3) 32%, transparent), transparent 72%);
+  background-size: 180% 180%, 180% 180%; background-repeat: no-repeat;
+  animation: nowAurora 16s ease-in-out infinite;
+}
+@keyframes nowAurora {
+  0%, 100% { background-position: 0% 30%, 100% 70%; }
+  50%      { background-position: 90% 60%, 8% 42%; }
+}
+.card--now:hover .now-aurora { opacity: .92; }
 .now-arrow {
   position: absolute; top: 16px; right: 18px; z-index: 3;
   font-size: 27px; line-height: 1; color: var(--muted);
   transition: transform .35s var(--ease), color .35s var(--ease);
 }
 .card--now:hover .now-arrow { transform: translate(4px, -4px); color: var(--accent); }
-.now-body { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; }
+.now-body { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; position: relative; z-index: 2; }
 .pulse {
-  width: 11px; height: 11px; border-radius: 50%; background: var(--accent); flex: none;
-  align-self: center;
+  width: 11px; height: 11px; border-radius: 50%; background: var(--accent);
+  display: inline-block; vertical-align: middle; margin: -4px 11px 0 0;
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
   animation: pulse 2s infinite;
 }
@@ -410,7 +438,7 @@ body {
   -webkit-text-fill-color: transparent; color: transparent;
   animation: monaFlow 8s linear infinite;
 }
-.now-sub { font-size: 12.5px; color: var(--muted); margin-top: 5px; }
+.now-sub { font-size: 12.5px; color: var(--muted); margin-top: 0; }
 
 /* ---------- clients marquee ---------- */
 .card--clients { display: flex; flex-direction: column; }
