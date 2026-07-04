@@ -43,68 +43,118 @@
     setTimeout(step, 900);
   }
 
-  /* ---------- dot globe ---------- */
+  /* ---------- dotted land globe (equirectangular land mask) ---------- */
   (function globe() {
     const cv = $("#globe"); if (!cv) return;
     const ctx = cv.getContext("2d");
-    const cityEl = $("#globe-city");
-    const cities = [
-      { name: "San Francisco", lat: 37.77, lon: -122.42 },
-      { name: "New York", lat: 40.71, lon: -74.0 },
-      { name: "Shanghai", lat: 31.23, lon: 121.47 },
-      { name: "London", lat: 51.5, lon: -0.12 },
-    ];
-    let ci = 0;
-    const dots = [];
-    // fibonacci sphere
-    const N = 620;
-    for (let i = 0; i < N; i++) {
-      const y = 1 - (i / (N - 1)) * 2;
-      const r = Math.sqrt(1 - y * y);
-      const t = Math.PI * (3 - Math.sqrt(5)) * i;
-      dots.push([Math.cos(t) * r, y, Math.sin(t) * r]);
+    const LM = window.GLOBE_LANDMASK;
+    const TILT = 0.36;                       // axis tilt toward viewer
+    const cosT = Math.cos(TILT), sinT = Math.sin(TILT);
+
+    // decode bitpacked land mask
+    let isLand = () => false;
+    if (LM && LM.bits) {
+      const bin = atob(LM.bits);
+      isLand = (ix, iy) => {
+        const idx = iy * LM.w + ix;
+        return (bin.charCodeAt(idx >> 3) >> (7 - (idx & 7))) & 1;
+      };
     }
-    const toXYZ = (lat, lon) => {
-      const la = lat * Math.PI / 180, lo = lon * Math.PI / 180;
-      return [Math.cos(la) * Math.cos(lo), Math.sin(la), Math.cos(la) * Math.sin(lo)];
-    };
-    let rot = 0;
-    const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#ff5c35";
+    // build land dots on a lat/lon grid
+    const dots = [];
+    const stepLat = 2.1, stepLon = 2.1;
+    for (let lat = -84; lat <= 84; lat += stepLat) {
+      for (let lon = -180; lon < 180; lon += stepLon) {
+        const u = ((lon + 180) / 360 * LM.w) | 0;
+        const v = ((90 - lat) / 180 * LM.h) | 0;
+        if (v < 0 || v >= LM.h || !isLand(Math.min(u, LM.w - 1), v)) continue;
+        const la = lat * Math.PI / 180, lo = lon * Math.PI / 180;
+        dots.push([Math.cos(la) * Math.cos(lo), Math.sin(la), Math.cos(la) * Math.sin(lo)]);
+      }
+    }
+    // graticule sample points (parallels + meridians)
+    const grid = [];
+    const toXYZ = (lat, lon) => { const a = lat * Math.PI / 180, o = lon * Math.PI / 180; return [Math.cos(a) * Math.cos(o), Math.sin(a), Math.cos(a) * Math.sin(o)]; };
+    for (let lat = -60; lat <= 60; lat += 30) { const line = []; for (let lon = -180; lon <= 180; lon += 5) line.push(toXYZ(lat, lon)); grid.push(line); }
+    for (let lon = -180; lon < 180; lon += 30) { const line = []; for (let lat = -84; lat <= 84; lat += 5) line.push(toXYZ(lat, lon)); grid.push(line); }
+
+    const cities = [
+      { name: "San Francisco", lat: 37.77, lon: -122.42, color: "#ffcf5c", home: true },
+      { name: "New York", lat: 40.71, lon: -74.0, color: "#ff7a6b" },
+      { name: "London", lat: 51.5, lon: -0.12, color: "#6be7a6" },
+      { name: "Tokyo", lat: 35.68, lon: 139.69, color: "#b58cff" },
+      { name: "Singapore", lat: 1.35, lon: 103.8, color: "#5fc8ff" },
+    ];
+    const hexA = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; };
+
+    let rot = params.get("grot") ? parseFloat(params.get("grot")) : 1.1;
+    // project a unit-sphere point → {px,py,z} with current spin + fixed tilt
+    function project(x, y, z, cosR, sinR, R, cx, cy) {
+      const xr = x * cosR - z * sinR, zr = x * sinR + z * cosR;
+      const Y = y * cosT - zr * sinT, Z = y * sinT + zr * cosT;
+      return { px: cx + xr * R, py: cy - Y * R, z: Z };
+    }
+
     function frame() {
-      const w = cv.width, h = cv.height, R = Math.min(w, h) * 0.42, cx = w / 2, cy = h / 2;
+      const w = cv.width, h = cv.height, R = Math.min(w, h) * 0.44, cx = w / 2, cy = h / 2;
       ctx.clearRect(0, 0, w, h);
-      rot += reduce ? 0 : 0.0025;
+      if (!reduce) rot += 0.0022;
       const cosR = Math.cos(rot), sinR = Math.sin(rot);
       const dark = document.documentElement.dataset.theme === "dark";
-      const base = dark ? "255,255,255" : "20,20,25";
-      for (const [x, y, z] of dots) {
-        const xr = x * cosR - z * sinR, zr = x * sinR + z * cosR;
-        const depth = (zr + 1) / 2;               // 0 back .. 1 front
-        const px = cx + xr * R, py = cy - y * R;
-        const a = 0.12 + depth * 0.6;
-        ctx.fillStyle = `rgba(${base},${a})`;
-        ctx.beginPath(); ctx.arc(px, py, 0.7 + depth * 1.1, 0, 7); ctx.fill();
+      const base = dark ? "255,255,255" : "24,24,28";
+
+      // atmosphere glow
+      const glow = ctx.createRadialGradient(cx, cy, R * 0.72, cx, cy, R * 1.06);
+      glow.addColorStop(0, "rgba(120,150,255,0)");
+      glow.addColorStop(1, dark ? "rgba(120,150,255,0.10)" : "rgba(90,120,220,0.08)");
+      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(cx, cy, R * 1.06, 0, 7); ctx.fill();
+
+      // graticule (front hemisphere only)
+      ctx.lineWidth = 1;
+      for (const line of grid) {
+        let prev = null;
+        for (const p of line) {
+          const q = project(p[0], p[1], p[2], cosR, sinR, R, cx, cy);
+          if (prev && prev.z > 0 && q.z > 0) {
+            ctx.strokeStyle = `rgba(${base},${0.05 + Math.min(prev.z, q.z) * 0.06})`;
+            ctx.beginPath(); ctx.moveTo(prev.px, prev.py); ctx.lineTo(q.px, q.py); ctx.stroke();
+          }
+          prev = q;
+        }
       }
-      // active city marker
-      const c = cities[ci];
-      let [mx, my, mz] = toXYZ(c.lat, c.lon);
-      const mxr = mx * cosR - mz * sinR, mzr = mx * sinR + mz * cosR;
-      if (mzr > -0.15) {
-        const px = cx + mxr * R, py = cy - my * R;
-        const pulse = reduce ? 3 : 3 + Math.sin(rot * 12) * 1.6;
-        ctx.fillStyle = accent();
-        ctx.beginPath(); ctx.arc(px, py, 3, 0, 7); ctx.fill();
-        ctx.strokeStyle = accent(); ctx.globalAlpha = .5; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.arc(px, py, pulse + 3, 0, 7); ctx.stroke(); ctx.globalAlpha = 1;
+      // land dots (front hemisphere, square "pixel" look, depth-faded)
+      for (const d of dots) {
+        const q = project(d[0], d[1], d[2], cosR, sinR, R, cx, cy);
+        if (q.z <= 0.02) continue;
+        const a = Math.min(1, 0.34 + q.z * 0.62);
+        const s = 1.0 + q.z * 1.5;
+        ctx.fillStyle = `rgba(${base},${a})`;
+        ctx.fillRect(q.px - s / 2, q.py - s / 2, s, s);
+      }
+      // rim
+      ctx.strokeStyle = dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.38)";
+      ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
+
+      // city markers + labels
+      ctx.font = "500 14px -apple-system, Inter, sans-serif";
+      ctx.textBaseline = "middle";
+      for (const c of cities) {
+        const [x, y, z] = toXYZ(c.lat, c.lon);
+        const q = project(x, y, z, cosR, sinR, R, cx, cy);
+        if (q.z <= 0) continue;
+        const a = Math.min(1, Math.max(0, (q.z - 0.03) / 0.28));
+        if (a <= 0) continue;
+        const rr = c.home ? 3.6 : 3;
+        ctx.fillStyle = hexA(c.color, a);
+        ctx.beginPath(); ctx.arc(q.px, q.py, rr, 0, 7); ctx.fill();
+        ctx.strokeStyle = hexA(c.color, a * 0.55); ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(q.px, q.py, rr + 3.5, 0, 7); ctx.stroke();
+        ctx.fillStyle = hexA(c.color, a);
+        ctx.fillText(c.name, q.px + rr + 7, q.py);
       }
       requestAnimationFrame(frame);
     }
     frame();
-    setInterval(() => {
-      ci = (ci + 1) % cities.length;
-      if (cityEl) { cityEl.style.opacity = 0; setTimeout(() => { cityEl.textContent = cities[ci].name; cityEl.style.opacity = 1; }, 250); }
-    }, 3200);
-    if (cityEl) cityEl.style.transition = "opacity .3s ease";
   })();
 
   /* ---------- analog clock ---------- */
