@@ -79,15 +79,23 @@
     for (let lon = -180; lon < 180; lon += 30) { const line = []; for (let lat = -84; lat <= 84; lat += 5) line.push(toXYZ(lat, lon)); grid.push(line); }
 
     const cities = [
-      { name: "San Francisco", lat: 37.77, lon: -122.42, color: "#ffcf5c", home: true },
-      { name: "New York", lat: 40.71, lon: -74.0, color: "#ff7a6b" },
-      { name: "London", lat: 51.5, lon: -0.12, color: "#6be7a6" },
-      { name: "Tokyo", lat: 35.68, lon: 139.69, color: "#b58cff" },
-      { name: "Singapore", lat: 1.35, lon: 103.8, color: "#5fc8ff" },
+      { name: "San Francisco", lat: 37.77, lon: -122.42, color: "#75A8FF", home: true },
+      { name: "New York", lat: 40.71, lon: -74.0, color: "#e6e7ee", dy: 0 },
+      { name: "Boston", lat: 42.36, lon: -71.06, color: "#e6e7ee", dy: -11 },
+      { name: "Chicago", lat: 41.88, lon: -87.63, color: "#e6e7ee", dy: 12 },
+      { name: "Milan", lat: 45.46, lon: 9.19, color: "#e6e7ee", dy: 0 },
+      { name: "Beijing", lat: 39.90, lon: 116.40, color: "#e6e7ee", dy: 0 },
     ];
     const hexA = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; };
+    // brand gradient for the landmass dots (blue → cyan → purple)
+    const GC1 = [117, 168, 255], GC2 = [95, 200, 255], GC3 = [158, 140, 255];
+    const gmix = (t) => {
+      t = t < 0 ? 0 : t > 1 ? 1 : t;
+      const a = t < 0.5 ? GC1 : GC2, b = t < 0.5 ? GC2 : GC3, u = t < 0.5 ? t * 2 : (t - 0.5) * 2;
+      return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
+    };
 
-    let rot = params.get("grot") ? parseFloat(params.get("grot")) : 1.1;
+    let rot = params.get("grot") ? parseFloat(params.get("grot")) : 3.1;
     // project a unit-sphere point → {px,py,z} with current spin + fixed tilt
     function project(x, y, z, cosR, sinR, R, cx, cy) {
       const xr = x * cosR - z * sinR, zr = x * sinR + z * cosR;
@@ -122,21 +130,32 @@
           prev = q;
         }
       }
-      // land dots (front hemisphere, square "pixel" look, depth-faded)
+      // land dots — brand-gradient glow, front hemisphere, depth-faded
       for (const d of dots) {
         const q = project(d[0], d[1], d[2], cosR, sinR, R, cx, cy);
         if (q.z <= 0.02) continue;
         const a = Math.min(1, 0.34 + q.z * 0.62);
         const s = 1.0 + q.z * 1.5;
-        ctx.fillStyle = `rgba(${base},${a})`;
+        let [cr, cg, cb] = gmix((q.py - (cy - R)) / (2 * R));   // vertical blue→cyan→purple
+        if (!dark) { cr *= 0.6; cg *= 0.6; cb *= 0.64; }         // deepen for light bg
+        ctx.fillStyle = `rgba(${cr | 0},${cg | 0},${cb | 0},${a})`;
         ctx.fillRect(q.px - s / 2, q.py - s / 2, s, s);
+      }
+      // colorful atmosphere over the sphere (dark only)
+      if (dark) {
+        const cg2 = ctx.createRadialGradient(cx - R * 0.25, cy - R * 0.3, R * 0.15, cx, cy, R * 1.02);
+        cg2.addColorStop(0, "rgba(95,200,255,0.09)");
+        cg2.addColorStop(0.55, "rgba(117,168,255,0.06)");
+        cg2.addColorStop(1, "rgba(158,140,255,0.12)");
+        ctx.save(); ctx.globalCompositeOperation = "lighter";
+        ctx.fillStyle = cg2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fill();
+        ctx.restore();
       }
       // rim
       ctx.strokeStyle = dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.38)";
       ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
 
-      // city markers + labels
-      ctx.font = "500 14px -apple-system, Inter, sans-serif";
+      // city markers + labels (SF = branding-blue highlight)
       ctx.textBaseline = "middle";
       for (const c of cities) {
         const [x, y, z] = toXYZ(c.lat, c.lon);
@@ -144,13 +163,24 @@
         if (q.z <= 0) continue;
         const a = Math.min(1, Math.max(0, (q.z - 0.03) / 0.28));
         if (a <= 0) continue;
-        const rr = c.home ? 3.6 : 3;
-        ctx.fillStyle = hexA(c.color, a);
-        ctx.beginPath(); ctx.arc(q.px, q.py, rr, 0, 7); ctx.fill();
-        ctx.strokeStyle = hexA(c.color, a * 0.55); ctx.lineWidth = 1.4;
-        ctx.beginPath(); ctx.arc(q.px, q.py, rr + 3.5, 0, 7); ctx.stroke();
-        ctx.fillStyle = hexA(c.color, a);
-        ctx.fillText(c.name, q.px + rr + 7, q.py);
+        if (c.home) {
+          ctx.save(); ctx.shadowColor = c.color; ctx.shadowBlur = 14;
+          ctx.fillStyle = hexA(c.color, a);
+          ctx.beginPath(); ctx.arc(q.px, q.py, 4.2, 0, 7); ctx.fill();
+          ctx.restore();
+          const pulse = reduce ? 8 : 8 + Math.sin(rot * 9) * 2.6;
+          ctx.strokeStyle = hexA(c.color, a * 0.5); ctx.lineWidth = 1.4;
+          ctx.beginPath(); ctx.arc(q.px, q.py, pulse, 0, 7); ctx.stroke();
+          ctx.font = "600 14px -apple-system, Inter, sans-serif";
+          ctx.fillStyle = hexA(c.color, a);
+          ctx.fillText(c.name, q.px + 11, q.py);
+        } else {
+          ctx.fillStyle = hexA(c.color, a * 0.9);
+          ctx.beginPath(); ctx.arc(q.px, q.py, 2.4, 0, 7); ctx.fill();
+          ctx.font = "500 12px -apple-system, Inter, sans-serif";
+          ctx.fillStyle = hexA(c.color, a * 0.82);
+          ctx.fillText(c.name, q.px + 6, q.py + (c.dy || 0));
+        }
       }
       requestAnimationFrame(frame);
     }

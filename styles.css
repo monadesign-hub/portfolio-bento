@@ -278,11 +278,14 @@ body {
   font-size: clamp(72px, 9vw, 128px);
   line-height: .8;
   letter-spacing: -.03em;
-  color: var(--text);
   margin: 6px 0;
-  background: linear-gradient(180deg, var(--text), color-mix(in srgb, var(--text) 55%, var(--accent)));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: monaFlow 8s linear infinite;
 }
+@keyframes monaFlow { to { background-position: -220% center; } }
 .logo-caption { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ---------- digital flora (image widget) ---------- */
@@ -342,9 +345,10 @@ body {
 .rl-name { font-size: 10.5px; line-height: 1.25; color: var(--text); }
 
 /* ---------- mode switch ---------- */
-.card--mode { display: flex; flex-direction: column; }
+.card--mode { display: flex; align-items: center; justify-content: center; }
+.card--mode .card-label { position: absolute; top: 18px; left: 18px; z-index: 3; }
 .mode-toggle {
-  margin-top: auto; align-self: flex-start;
+  margin: 0;
   width: 100%; height: 46px; border-radius: 16px;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
@@ -381,7 +385,13 @@ body {
 :root[data-theme="light"] .mode-ic--sun  { opacity: 0; }
 
 /* ---------- now building ---------- */
-.card--now { display: flex; flex-direction: column; }
+.card--now { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+.now-arrow {
+  position: absolute; top: 18px; right: 18px; z-index: 3;
+  font-size: 18px; color: var(--muted);
+  transition: transform .35s var(--ease), color .35s var(--ease);
+}
+.card--now:hover .now-arrow { transform: translate(3px, -3px); color: var(--accent); }
 .now-body { display: flex; align-items: center; gap: 12px; margin-top: auto; }
 .pulse {
   width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none;
