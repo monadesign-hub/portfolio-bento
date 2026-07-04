@@ -521,10 +521,13 @@ body {
   grid-column: span var(--g, 3); grid-row: span var(--h, 1);
   border-radius: var(--radius); overflow: hidden; position: relative;
   border: 1px solid var(--line); background: var(--card); cursor: pointer;
+  text-decoration: none; color: inherit;
   display: flex; flex-direction: column;
   transition: transform .45s var(--ease), opacity .45s var(--ease), filter .45s var(--ease), border-color .45s;
 }
-.wc-media { flex: 1; position: relative; }
+.wc-media { flex: 1; position: relative; overflow: hidden; }
+.wc-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .6s var(--ease); }
+.work-card:hover .wc-img { transform: scale(1.05); }
 .wc-media[data-shade="a"] { background: linear-gradient(135deg,#2b2b31,#141418 60%), radial-gradient(circle at 70% 30%, color-mix(in srgb,var(--accent) 40%, transparent), transparent 55%); background-blend-mode: screen; }
 .wc-media[data-shade="b"] { background: linear-gradient(135deg,#20222b,#14161c); }
 .wc-media[data-shade="c"] { background: linear-gradient(135deg,#efe9df,#d9cfbf); }
