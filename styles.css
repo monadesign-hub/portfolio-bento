@@ -268,13 +268,11 @@ body {
 /* ---------- logotype ---------- */
 .card--logo { display: flex; flex-direction: column; justify-content: space-between; }
 .logotype {
-  font-family: "Fraunces", serif;
-  font-weight: 900;
+  font-family: "Instrument Serif", serif;
   font-style: italic;
-  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
-  font-size: clamp(66px, 8.2vw, 120px);
-  line-height: .86;
-  letter-spacing: -.01em;
+  font-size: clamp(72px, 9vw, 128px);
+  line-height: .8;
+  letter-spacing: -.03em;
   color: var(--text);
   margin: 6px 0;
   background: linear-gradient(180deg, var(--text), color-mix(in srgb, var(--text) 55%, var(--accent)));
