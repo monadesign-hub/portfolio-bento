@@ -380,17 +380,18 @@ body {
 :root[data-theme="light"] .mode-ic--sun  { opacity: 0; }
 
 /* ---------- now building ---------- */
-.card--now { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+.card--now { display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit; cursor: pointer; }
+.card--now .card-label { position: absolute; top: 18px; left: 18px; z-index: 3; }
 .now-arrow {
   position: absolute; top: 16px; right: 18px; z-index: 3;
   font-size: 27px; line-height: 1; color: var(--muted);
   transition: transform .35s var(--ease), color .35s var(--ease);
 }
 .card--now:hover .now-arrow { transform: translate(4px, -4px); color: var(--accent); }
-.now-body { display: flex; align-items: center; gap: 13px; margin-top: auto; }
+.now-body { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; }
 .pulse {
   width: 11px; height: 11px; border-radius: 50%; background: var(--accent); flex: none;
-  align-self: flex-end; margin-bottom: 12px;
+  align-self: center;
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
   animation: pulse 2s infinite;
 }
