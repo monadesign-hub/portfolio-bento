@@ -31,7 +31,7 @@
   --glass-spec: rgba(255,255,255,.55);   /* top-edge specular */
   --glass-sheen: rgba(255,255,255,.14);  /* cursor sheen */
   --shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 -1px 1px rgba(0,0,0,.4) inset, 0 24px 50px -22px rgba(0,0,0,.85);
-  --aurora-a: .55; --aurora-b: .42;
+  --aurora-a: .3; --aurora-b: .2;
 }
 
 :root[data-theme="light"] {
@@ -113,6 +113,11 @@ body {
 @keyframes drift1 { to { transform: translate(8vw, 6vw) scale(1.15); } }
 @keyframes drift2 { to { transform: translate(-7vw, -5vw) scale(1.1); } }
 @keyframes drift3 { to { transform: translate(-10vw, 4vw) scale(1.2); } }
+
+/* dark mode: neutralize the aurora toward near-black (less navy) */
+:root[data-theme="dark"] .blob--1 { background: radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, #5a5a64), transparent 66%); }
+:root[data-theme="dark"] .blob--2 { background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 32%, #54545e), transparent 66%); }
+:root[data-theme="dark"] .blob--3 { background: radial-gradient(circle, color-mix(in srgb, #6b7cff 28%, #4a4a53), transparent 70%); opacity: calc(var(--aurora-b) * .4); }
 
 /* ---------- views ---------- */
 .view { display: none; animation: viewIn .5s var(--ease); }
