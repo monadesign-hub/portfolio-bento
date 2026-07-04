@@ -103,15 +103,39 @@
           </div>
         </article>
 
-        <!-- ROLES (activity rings) -->
+        <!-- ROLES (delicate venn) -->
         <article class="card card--roles" style="--c:3; --r:3;">
           <span class="card-label">What I do</span>
           <div class="roles-wrap">
-            <svg class="rings" id="rings" viewBox="0 0 160 160" aria-hidden="true"></svg>
+            <svg class="venn" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <radialGradient id="g-ai" cx="100" cy="78" r="48" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#75A8FF" stop-opacity=".5"/><stop offset="1" stop-color="#75A8FF" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="g-ds" cx="76" cy="122" r="48" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#5FC8FF" stop-opacity=".5"/><stop offset="1" stop-color="#5FC8FF" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="g-fs" cx="124" cy="122" r="48" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#9E8CFF" stop-opacity=".5"/><stop offset="1" stop-color="#9E8CFF" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="venn-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4.5"/></filter>
+              </defs>
+              <g class="venn-glow" filter="url(#venn-soft)" style="mix-blend-mode:screen">
+                <circle cx="100" cy="78" r="46" fill="url(#g-ai)"/>
+                <circle cx="76" cy="122" r="46" fill="url(#g-ds)"/>
+                <circle cx="124" cy="122" r="46" fill="url(#g-fs)"/>
+              </g>
+              <g fill="none" stroke-width="1">
+                <circle cx="100" cy="78" r="46" stroke="#75A8FF" stroke-opacity=".55"/>
+                <circle cx="76" cy="122" r="46" stroke="#5FC8FF" stroke-opacity=".55"/>
+                <circle cx="124" cy="122" r="46" stroke="#9E8CFF" stroke-opacity=".55"/>
+              </g>
+              <circle class="venn-core" cx="100" cy="106" r="2.4" fill="#fff"/>
+            </svg>
             <ul class="roles-legend">
-              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name">AI Product Design<small>Design</small></span><span class="rl-val">95%</span></li>
-              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name">Full-stack Building<small>Build</small></span><span class="rl-val">82%</span></li>
-              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name">UX Research<small>Research</small></span><span class="rl-val">90%</span></li>
+              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name">AI Product Thinking</span></li>
+              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name">Design System</span></li>
+              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name">Full-stack Vibe Coding</span></li>
             </ul>
           </div>
         </article>

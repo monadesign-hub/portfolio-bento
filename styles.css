@@ -317,10 +317,14 @@ body {
 .stat-cap { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.25; }
 .stat:nth-child(1) .stat-num, .stat:nth-child(2) .stat-num { color: var(--accent); }
 
-/* ---------- roles (activity rings) ---------- */
+/* ---------- roles (delicate venn) ---------- */
 .card--roles { display: flex; flex-direction: column; }
-.roles-wrap { display: flex; align-items: center; gap: 16px; margin: auto 0; }
-.rings { width: 128px; height: 128px; flex: none; }
+.roles-wrap { display: flex; align-items: center; gap: 14px; margin: auto 0; }
+.venn { width: 152px; height: 152px; flex: none; overflow: visible; }
+.venn-glow { animation: vennBreath 7s ease-in-out infinite; transform-origin: center; }
+.venn-core { animation: vennCore 7s ease-in-out infinite; }
+@keyframes vennBreath { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
+@keyframes vennCore { 0%, 100% { opacity: .55; r: 2.2px; } 50% { opacity: 1; r: 2.8px; } }
 .roles-legend { list-style: none; display: flex; flex-direction: column; gap: 13px; flex: 1; min-width: 0; }
 .roles-legend li { display: flex; align-items: center; gap: 9px; }
 .roles-legend .dot {
