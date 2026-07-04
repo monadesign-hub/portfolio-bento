@@ -513,6 +513,23 @@ body {
 .pill.is-active { background: var(--text); color: var(--bg); border-color: var(--text); }
 .pill.is-active b { color: var(--bg); opacity: .55; }
 
+/* full-width feature card — shows the whole cover image, no crop */
+.work-feature {
+  display: block; position: relative; margin-bottom: var(--gap);
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: var(--card);
+  text-decoration: none; color: inherit;
+  transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
+}
+.work-feature:hover { transform: translateY(-4px); border-color: var(--line-hi); box-shadow: 0 30px 60px -28px rgba(0,0,0,.6); }
+.wf-img { display: block; width: 100%; height: auto; }   /* natural 16:9, never cropped */
+.wf-meta { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 16px 22px; }
+.wf-title { font-weight: 600; font-size: 16px; }
+.wf-tag { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.wf-cta { font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; transition: color .3s var(--ease); }
+.work-feature:hover .wf-cta { color: var(--accent); }
+.work-feature.is-hidden { display: none; }
+
 .work-grid {
   display: grid; grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: 150px; gap: var(--gap);

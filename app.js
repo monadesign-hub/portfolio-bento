@@ -244,7 +244,7 @@
   if (params.get("view") === "work") $('.seg[data-view="work"]')?.click();
 
   /* ---------- work filters ---------- */
-  const cards = $$(".work-card");
+  const cards = $$(".work-card, .work-feature");
   $$(".pill").forEach(pill => pill.addEventListener("click", () => {
     const f = pill.dataset.filter;
     $$(".pill").forEach(p => p.classList.toggle("is-active", p === pill));
