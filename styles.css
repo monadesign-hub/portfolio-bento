@@ -513,9 +513,10 @@ body {
 .pill.is-active { background: var(--text); color: var(--bg); border-color: var(--text); }
 .pill.is-active b { color: var(--bg); opacity: .55; }
 
-/* full-width feature card — shows the whole cover image, no crop */
+/* feature cards — show the whole cover (image or video), no crop */
+.work-features { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-bottom: var(--gap); }
 .work-feature {
-  display: block; position: relative; margin-bottom: var(--gap);
+  display: block; position: relative;
   border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--line); background: var(--card);
   text-decoration: none; color: inherit;
@@ -529,6 +530,7 @@ body {
 .wf-cta { font-size: 13px; font-weight: 500; color: var(--muted); white-space: nowrap; transition: color .3s var(--ease); }
 .work-feature:hover .wf-cta { color: var(--accent); }
 .work-feature.is-hidden { display: none; }
+@media (max-width: 760px) { .work-features { grid-template-columns: 1fr; } }
 
 .work-grid {
   display: grid; grid-template-columns: repeat(12, 1fr);
