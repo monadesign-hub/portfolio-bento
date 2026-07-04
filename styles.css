@@ -268,11 +268,12 @@ body {
 /* ---------- logotype ---------- */
 .card--logo { display: flex; flex-direction: column; justify-content: space-between; }
 .logotype {
-  font-family: "Instrument Serif", serif;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
   font-style: italic;
-  font-size: clamp(72px, 9vw, 128px);
-  line-height: .8;
-  letter-spacing: -.03em;
+  font-size: clamp(64px, 8vw, 116px);
+  line-height: .84;
+  letter-spacing: -.02em;
   color: var(--text);
   margin: 6px 0;
   background: linear-gradient(180deg, var(--text), color-mix(in srgb, var(--text) 55%, var(--accent)));
