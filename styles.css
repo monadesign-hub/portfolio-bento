@@ -514,7 +514,7 @@ body {
 .pill.is-active b { color: var(--bg); opacity: .55; }
 
 /* feature cards — show the whole cover (image or video), no crop */
-.work-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
+.work-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
 .work-feature {
   display: block; position: relative;
   border-radius: var(--radius); overflow: hidden;
