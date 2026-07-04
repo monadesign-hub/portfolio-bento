@@ -328,9 +328,17 @@ body {
 .stat:nth-child(-n+2)  { border-bottom: 1px solid var(--line); }
 .stat-num {
   font-family: "Instrument Serif", serif;
-  font-size: 40px; line-height: 1; color: var(--accent);
+  font-size: 40px; line-height: 1;
   font-variant-numeric: tabular-nums;
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: monaFlow 8s linear infinite;
 }
+.stat:nth-child(2) .stat-num { animation-delay: -2s; }
+.stat:nth-child(3) .stat-num { animation-delay: -4s; }
+.stat:nth-child(4) .stat-num { animation-delay: -6s; }
 .stat-cap { font-size: 11.5px; color: var(--muted); line-height: 1.25; }
 
 /* ---------- roles (delicate venn) ---------- */
