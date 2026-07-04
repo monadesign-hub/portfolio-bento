@@ -289,8 +289,13 @@ body {
 .flora {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 55% 50%;
+  /* soft vignette so the image edges dissolve into the card */
+  -webkit-mask: radial-gradient(125% 120% at 50% 44%, #000 52%, transparent 100%);
+          mask: radial-gradient(125% 120% at 50% 44%, #000 52%, transparent 100%);
   transition: opacity .5s var(--ease), transform 6s var(--ease);
 }
+/* dark bloom: desaturate + dim + screen-blend so its dark bg melts into the card */
+.flora--dark { filter: saturate(.72) brightness(.92); mix-blend-mode: screen; }
 .flora--light { opacity: 0; }
 :root[data-theme="light"] .flora--dark { opacity: 0; }
 :root[data-theme="light"] .flora--light { opacity: 1; }
