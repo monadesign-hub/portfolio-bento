@@ -327,19 +327,19 @@ body {
 
 /* ---------- roles (delicate venn) ---------- */
 .card--roles { display: flex; flex-direction: column; }
-.roles-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: auto 0; width: 100%; }
-.venn { width: 100%; max-width: 182px; aspect-ratio: 1 / 1; height: auto; flex: none; overflow: visible; }
+.roles-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: auto 0; width: 100%; }
+.venn { width: 100%; max-width: 198px; aspect-ratio: 1 / 1; height: auto; flex: none; overflow: visible; }
 .venn-glow { animation: vennBreath 7s ease-in-out infinite; transform-origin: center; }
 .venn-core { animation: vennCore 7s ease-in-out infinite; }
 @keyframes vennBreath { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
 @keyframes vennCore { 0%, 100% { opacity: .55; r: 2.2px; } 50% { opacity: 1; r: 2.8px; } }
-.roles-legend { list-style: none; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 14px; width: 100%; }
-.roles-legend li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 7px; flex: 1 1 0; min-width: 0; }
+.roles-legend { list-style: none; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 10px; width: 100%; }
+.roles-legend li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; flex: 1 1 0; min-width: 0; }
 .roles-legend .dot {
-  width: 9px; height: 9px; border-radius: 50%; background: var(--rc); flex: none;
-  box-shadow: 0 0 9px color-mix(in srgb, var(--rc) 70%, transparent);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--rc); flex: none;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--rc) 70%, transparent);
 }
-.rl-name { font-size: 11.5px; line-height: 1.28; color: var(--text); }
+.rl-name { font-size: 10.5px; line-height: 1.25; color: var(--text); }
 
 /* ---------- mode switch ---------- */
 .card--mode { display: flex; flex-direction: column; }
@@ -353,18 +353,32 @@ body {
   position: relative; cursor: pointer; overflow: hidden;
   transition: background .5s var(--ease);
 }
+/* sun / moon icons on the track */
+.mode-ic {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 15px; height: 15px; color: var(--faint); pointer-events: none; z-index: 1;
+}
+.mode-ic--moon { left: 13px; }
+.mode-ic--sun  { right: 13px; }
+/* crescent-moon thumb */
 .mode-orb {
-  position: absolute; top: 50%; left: 8px; transform: translateY(-50%);
+  position: absolute; z-index: 2; top: 50%; left: 8px; transform: translateY(-50%);
   width: 30px; height: 30px; border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #fff, #d3d3d9);
-  box-shadow: 0 2px 6px rgba(0,0,0,.35), inset -5px -4px 0 -2px rgba(0,0,0,.08);
-  transition: left .55s var(--spring), background .5s var(--ease), box-shadow .5s var(--ease);
+  background: radial-gradient(circle at 35% 30%, #fdfdff, #cdced4);
+  -webkit-mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
+          mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  transition: left .55s var(--spring), background .5s var(--ease);
 }
 :root[data-theme="light"] .mode-orb {
   left: calc(100% - 38px);
-  background: radial-gradient(circle at 32% 30%, var(--accent-2), var(--accent));
-  box-shadow: none;
+  background: radial-gradient(circle at 34% 28%, #fff, var(--accent-2) 90%);
+  -webkit-mask: none; mask: none;                     /* full disc = sun */
+  filter: drop-shadow(0 1px 4px rgba(90,150,255,.45));
 }
+/* hide whichever icon sits under the thumb */
+:root[data-theme="dark"]  .mode-ic--moon { opacity: 0; }
+:root[data-theme="light"] .mode-ic--sun  { opacity: 0; }
 
 /* ---------- now building ---------- */
 .card--now { display: flex; flex-direction: column; }
@@ -469,18 +483,40 @@ body {
    ============================================================ */
 .dock {
   position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 4px; padding: 5px;
-  background: var(--glass-bg-hi);
-  backdrop-filter: blur(26px) saturate(180%); -webkit-backdrop-filter: blur(26px) saturate(180%);
-  border: 1px solid var(--glass-border); border-radius: 999px;
-  box-shadow: 0 1px 0 var(--glass-spec) inset, 0 18px 44px -16px rgba(0,0,0,.6); z-index: 50;
+  display: flex; padding: 4px; z-index: 50; border-radius: 999px;
+  background: rgba(16,16,18,.66);
+  backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 14px 36px -14px rgba(0,0,0,.75);
 }
+:root[data-theme="light"] .dock {
+  background: rgba(226,222,214,.7);
+  border-color: rgba(0,0,0,.08);
+  box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 14px 30px -16px rgba(0,0,0,.25);
+}
+/* sliding frosted-glass thumb */
+.dock-thumb {
+  position: absolute; z-index: 1; top: 4px; bottom: 4px; left: 4px;
+  width: calc(50% - 4px); border-radius: 999px;
+  background: linear-gradient(180deg, #5c5c64, #38383e);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 1px 0 rgba(255,255,255,.3) inset, 0 -1px 2px rgba(0,0,0,.4) inset, 0 6px 16px -5px rgba(0,0,0,.7);
+  transition: transform .45s var(--spring);
+}
+:root[data-theme="light"] .dock-thumb {
+  background: linear-gradient(180deg, #ffffff, #f1efe9);
+  border-color: rgba(0,0,0,.06);
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 5px 14px -4px rgba(0,0,0,.22);
+}
+.dock[data-active="work"] .dock-thumb { transform: translateX(100%); }
 .seg {
+  position: relative; z-index: 2; min-width: 118px; text-align: center;
   font-family: inherit; font-size: 13.5px; font-weight: 500;
-  padding: 9px 22px; border-radius: 999px; border: none; cursor: pointer;
-  background: transparent; color: var(--muted); transition: color .3s, background .3s var(--ease);
+  padding: 9px 6px; border-radius: 999px; border: none; cursor: pointer;
+  background: transparent; color: var(--muted); transition: color .35s var(--ease);
 }
-.seg.is-active { background: var(--text); color: var(--bg); }
+.seg.is-active { color: #fff; }
+:root[data-theme="light"] .seg.is-active { color: var(--text); }
 
 /* ============================================================
    RESPONSIVE

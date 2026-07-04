@@ -196,8 +196,10 @@
 
   /* ---------- view switch (dashboard / work) ---------- */
   const views = { dashboard: $("#view-dashboard"), work: $("#view-work") };
+  const dock = $(".dock");
   $$(".seg").forEach(seg => seg.addEventListener("click", () => {
     const v = seg.dataset.view;
+    if (dock) dock.dataset.active = v;
     $$(".seg").forEach(s => s.classList.toggle("is-active", s === seg));
     for (const key in views) {
       const on = key === v;

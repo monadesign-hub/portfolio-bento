@@ -133,9 +133,9 @@
               <circle class="venn-core" cx="100" cy="106" r="2.4" fill="#fff"/>
             </svg>
             <ul class="roles-legend">
-              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name">AI Product Thinking</span></li>
-              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name">Design System</span></li>
-              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name">Full-stack Vibe Coding</span></li>
+              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name">AI Product Design Thinking</span></li>
+              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name">Pixel Perfect Design System</span></li>
+              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name">Full-Stack Vibe Coding Deployment</span></li>
             </ul>
           </div>
         </article>
@@ -144,6 +144,16 @@
         <article class="card card--mode" style="--c:2; --r:2;">
           <span class="card-label">Mode</span>
           <button class="mode-toggle" id="mode-toggle" aria-label="Toggle light / dark mode">
+            <svg class="mode-ic mode-ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>
+            <svg class="mode-ic mode-ic--sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
+              <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="2.5" x2="12" y2="4.8"/><line x1="12" y1="19.2" x2="12" y2="21.5"/>
+                <line x1="2.5" y1="12" x2="4.8" y2="12"/><line x1="19.2" y1="12" x2="21.5" y2="12"/>
+                <line x1="5.4" y1="5.4" x2="7" y2="7"/><line x1="17" y1="17" x2="18.6" y2="18.6"/>
+                <line x1="5.4" y1="18.6" x2="7" y2="17"/><line x1="17" y1="7" x2="18.6" y2="5.4"/>
+              </g>
+            </svg>
             <span class="mode-orb"></span>
           </button>
         </article>
@@ -226,7 +236,8 @@
     </section>
 
     <!-- ============ DOCK ============ -->
-    <nav class="dock" aria-label="View switch">
+    <nav class="dock" aria-label="View switch" data-active="dashboard">
+      <span class="dock-thumb" aria-hidden="true"></span>
       <button class="seg is-active" data-view="dashboard">Dashboard</button>
       <button class="seg" data-view="work">Work</button>
     </nav>
