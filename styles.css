@@ -319,21 +319,19 @@ body {
 
 /* ---------- roles (delicate venn) ---------- */
 .card--roles { display: flex; flex-direction: column; }
-.roles-wrap { display: flex; align-items: center; gap: 14px; margin: auto 0; }
-.venn { width: 152px; height: 152px; flex: none; overflow: visible; }
+.roles-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: auto 0; width: 100%; }
+.venn { width: 100%; max-width: 182px; aspect-ratio: 1 / 1; height: auto; flex: none; overflow: visible; }
 .venn-glow { animation: vennBreath 7s ease-in-out infinite; transform-origin: center; }
 .venn-core { animation: vennCore 7s ease-in-out infinite; }
 @keyframes vennBreath { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
 @keyframes vennCore { 0%, 100% { opacity: .55; r: 2.2px; } 50% { opacity: 1; r: 2.8px; } }
-.roles-legend { list-style: none; display: flex; flex-direction: column; gap: 13px; flex: 1; min-width: 0; }
-.roles-legend li { display: flex; align-items: center; gap: 9px; }
+.roles-legend { list-style: none; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 14px; width: 100%; }
+.roles-legend li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 7px; flex: 1 1 0; min-width: 0; }
 .roles-legend .dot {
   width: 9px; height: 9px; border-radius: 50%; background: var(--rc); flex: none;
   box-shadow: 0 0 9px color-mix(in srgb, var(--rc) 70%, transparent);
 }
-.rl-name { flex: 1; font-size: 12.5px; line-height: 1.2; color: var(--text); }
-.rl-name small { display: block; color: var(--muted); font-size: 11px; }
-.rl-val { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rl-name { font-size: 11.5px; line-height: 1.28; color: var(--text); }
 
 /* ---------- mode switch ---------- */
 .card--mode { display: flex; flex-direction: column; }
