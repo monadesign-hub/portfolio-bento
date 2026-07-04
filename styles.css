@@ -370,13 +370,15 @@ body {
 /* ---------- clients marquee ---------- */
 .card--clients { display: flex; flex-direction: column; justify-content: center; }
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); margin-top: 12px; }
-.marquee-track { display: flex; gap: 44px; width: max-content; animation: marquee 22s linear infinite; }
-.marquee-track span {
-  font-family: "Instrument Serif", serif; font-size: 26px; color: var(--muted);
-  white-space: nowrap; transition: color .3s;
+.marquee-track { display: flex; align-items: center; gap: 52px; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-track .logo {
+  height: 26px; width: auto; flex: none; object-fit: contain;
+  filter: brightness(0) invert(1);       /* uniform white */
+  opacity: .62; transition: opacity .3s;
 }
+:root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .5; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-track span:hover { color: var(--text); }
+.marquee-track .logo:hover { opacity: 1; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ============================================================
