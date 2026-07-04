@@ -373,8 +373,8 @@ body {
 .now-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
 /* ---------- clients marquee ---------- */
-.card--clients { display: flex; flex-direction: column; justify-content: center; }
-.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); margin-top: 12px; }
+.card--clients { display: flex; flex-direction: column; }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); margin: auto 0; }
 .marquee-track { display: flex; align-items: center; gap: 52px; width: max-content; animation: marquee 30s linear infinite; }
 .marquee-track .logo {
   width: auto; flex: none; object-fit: contain;
