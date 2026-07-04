@@ -6,6 +6,7 @@
 :root {
   --accent: #75A8FF;
   --accent-2: #5FC8FF;
+  --accent-3: #9E8CFF;
   --radius: 26px;
   --gap: 12px;
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -135,7 +136,7 @@ body {
 .card--logo    { grid-column: 1 / 5;   grid-row: 4 / 7; }
 .card--clock   { grid-column: 5 / 7;   grid-row: 4 / 7; }
 .card--stats   { grid-column: 7 / 10;  grid-row: 4 / 7; }
-.card--radar   { grid-column: 10 / 13; grid-row: 4 / 7; }
+.card--roles   { grid-column: 10 / 13; grid-row: 4 / 7; }
 .card--now     { grid-column: 1 / 5;   grid-row: 7 / 9; }
 .card--mode    { grid-column: 5 / 7;   grid-row: 7 / 9; }
 .card--clients { grid-column: 7 / 13;  grid-row: 7 / 9; }
@@ -295,9 +296,19 @@ body {
 .stat-cap { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.25; }
 .stat:nth-child(1) .stat-num, .stat:nth-child(2) .stat-num { color: var(--accent); }
 
-/* ---------- radar ---------- */
-.card--radar { display: flex; flex-direction: column; }
-.radar { width: 100%; flex: 1; margin-top: 6px; }
+/* ---------- roles (activity rings) ---------- */
+.card--roles { display: flex; flex-direction: column; }
+.roles-wrap { display: flex; align-items: center; gap: 16px; margin: auto 0; }
+.rings { width: 128px; height: 128px; flex: none; }
+.roles-legend { list-style: none; display: flex; flex-direction: column; gap: 13px; flex: 1; min-width: 0; }
+.roles-legend li { display: flex; align-items: center; gap: 9px; }
+.roles-legend .dot {
+  width: 9px; height: 9px; border-radius: 50%; background: var(--rc); flex: none;
+  box-shadow: 0 0 9px color-mix(in srgb, var(--rc) 70%, transparent);
+}
+.rl-name { flex: 1; font-size: 12.5px; line-height: 1.2; color: var(--text); }
+.rl-name small { display: block; color: var(--muted); font-size: 11px; }
+.rl-val { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* ---------- mode switch ---------- */
 .card--mode { display: flex; flex-direction: column; }
@@ -441,7 +452,7 @@ body {
   .card--logo   { grid-column: 1 / 4; }
   .card--clock  { grid-column: 4 / 7; }
   .card--stats  { grid-column: 1 / 4; }
-  .card--radar  { grid-column: 4 / 7; }
+  .card--roles  { grid-column: 4 / 7; }
   .card--now    { grid-column: 1 / 5; grid-row: auto / span 2; }
   .card--mode   { grid-column: 5 / 7; grid-row: auto / span 2; }
   .card--clients{ grid-column: 1 / 7; grid-row: auto / span 2; }

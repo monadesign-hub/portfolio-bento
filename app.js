@@ -148,53 +148,40 @@
     draw();
   })();
 
-  /* ---------- radar / skill graph ---------- */
-  (function radar() {
-    const svg = $("#radar"); if (!svg) return;
+  /* ---------- roles: Apple-style activity rings ---------- */
+  (function rings() {
+    const svg = $("#rings"); if (!svg) return;
     const NS = "http://www.w3.org/2000/svg";
-    const axes = [
-      { label: "AI Design", v: 0.95 },
-      { label: "Fintech", v: 0.88 },
-      { label: "Systems", v: 0.82 },
-      { label: "Research", v: 0.78 },
-      { label: "Full-stack", v: 0.85 },
+    const cx = 80, cy = 80, w = 13;
+    // outer→inner: Design, Build, Research
+    const cfg = [
+      { r: 62, frac: 0.95, color: "var(--accent)" },
+      { r: 46, frac: 0.82, color: "var(--accent-2)" },
+      { r: 30, frac: 0.90, color: "var(--accent-3)" },
     ];
-    const cx = 100, cy = 104, R = 66, n = axes.length;
-    const pt = (i, r) => {
-      const a = -Math.PI / 2 + i * 2 * Math.PI / n;
-      return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
-    };
-    const mk = (name, attrs) => { const e = document.createElementNS(NS, name); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
-    // rings
-    for (let ring = 1; ring <= 3; ring++) {
-      const pts = axes.map((_, i) => pt(i, R * ring / 3).join(",")).join(" ");
-      svg.appendChild(mk("polygon", { points: pts, fill: "none", stroke: "var(--line)", "stroke-width": 1 }));
-    }
-    // spokes + labels
-    axes.forEach((ax, i) => {
-      const [x, y] = pt(i, R);
-      svg.appendChild(mk("line", { x1: cx, y1: cy, x2: x, y2: y, stroke: "var(--line)", "stroke-width": 1 }));
-      const [lx, ly] = pt(i, R + 14);
-      const t = mk("text", { x: lx, y: ly, fill: "var(--muted)", "font-size": 7.5, "text-anchor": lx < cx - 5 ? "end" : lx > cx + 5 ? "start" : "middle", "dominant-baseline": "middle" });
-      t.textContent = ax.label; t.setAttribute("font-family", "Inter, sans-serif");
-      svg.appendChild(t);
+    const mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+    const arcs = [];
+    cfg.forEach(c => {
+      const C = 2 * Math.PI * c.r;
+      const track = mk("circle", { cx, cy, r: c.r, fill: "none", "stroke-width": w });
+      track.style.stroke = "var(--line)";
+      svg.appendChild(track);
+      const arc = mk("circle", { cx, cy, r: c.r, fill: "none", "stroke-width": w, "stroke-linecap": "round", transform: `rotate(-90 ${cx} ${cy})` });
+      arc.style.stroke = c.color;
+      arc.style.strokeDasharray = C;
+      arc.style.strokeDashoffset = reduce ? C * (1 - c.frac) : C;
+      svg.appendChild(arc);
+      arcs.push({ arc, off: C * (1 - c.frac) });
     });
-    // data polygon (animated)
-    const full = axes.map((ax, i) => pt(i, R * ax.v).join(",")).join(" ");
-    const zero = axes.map((_, i) => pt(i, 0.001).join(",")).join(" ");
-    const poly = mk("polygon", { points: reduce ? full : zero, fill: "color-mix(in srgb, var(--accent) 22%, transparent)", stroke: "var(--accent)", "stroke-width": 1.5, "stroke-linejoin": "round" });
-    svg.appendChild(poly);
-    const verts = axes.map((ax, i) => { const [x, y] = pt(i, R * ax.v); const c = mk("circle", { cx: x, cy: y, r: 2.4, fill: "var(--accent)", opacity: reduce ? 1 : 0 }); svg.appendChild(c); return c; });
     if (!reduce) {
-      const io = new IntersectionObserver((es) => {
-        es.forEach(e => {
-          if (!e.isIntersecting) return;
-          poly.setAttribute("points", full);
-          poly.style.transition = "all 1s cubic-bezier(.22,.61,.36,1)";
-          verts.forEach((c, i) => setTimeout(() => c.style.transition = "opacity .4s ease", 0) || setTimeout(() => c.setAttribute("opacity", 1), 500 + i * 60));
-          io.disconnect();
+      const io = new IntersectionObserver((es) => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        arcs.forEach((a, i) => {
+          a.arc.style.transition = `stroke-dashoffset 1.1s cubic-bezier(.22,.61,.36,1) ${i * 0.13}s`;
+          requestAnimationFrame(() => { a.arc.style.strokeDashoffset = a.off; });
         });
-      }, { threshold: .4 });
+        io.disconnect();
+      }), { threshold: .4 });
       io.observe(svg);
     }
   })();
