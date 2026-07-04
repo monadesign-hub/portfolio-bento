@@ -384,11 +384,11 @@ body {
 /* optically balanced heights — equal visual weight, not equal pixels */
 .marquee-track .logo[alt="Google"]     { height: 30px; }
 .marquee-track .logo[alt="Harvard"]    { height: 30px; }
-.marquee-track .logo[alt="BMO"]        { height: 38px; }
-.marquee-track .logo[alt="BNY"]        { height: 27px; }
-.marquee-track .logo[alt="Nationwide"] { height: 36px; }
-.marquee-track .logo[alt="TD Bank"]    { height: 42px; }
-.marquee-track .logo[alt="Supernova"]  { height: 26px; }
+.marquee-track .logo[alt="BMO"]        { height: 36px; }
+.marquee-track .logo[alt="BNY"]        { height: 23px; }
+.marquee-track .logo[alt="Nationwide"] { height: 34px; }
+.marquee-track .logo[alt="TD Bank"]    { height: 38px; }
+.marquee-track .logo[alt="Supernova"]  { height: 33px; }
 :root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .5; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track .logo:hover { opacity: 1; }
