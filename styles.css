@@ -210,7 +210,7 @@ body {
 .intro-line {
   font-family: "Instrument Serif", serif;
   font-weight: 400;
-  font-size: clamp(32px, 3.6vw, 50px);
+  font-size: clamp(27px, 3vw, 33px);
   line-height: 1.05;
   letter-spacing: -.01em;
   margin-top: auto;
