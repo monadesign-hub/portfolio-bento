@@ -500,7 +500,7 @@ body {
    ============================================================ */
 .work-head {
   display: flex; justify-content: space-between; align-items: flex-end;
-  gap: 20px; margin-bottom: 22px; flex-wrap: wrap;
+  gap: 20px; margin-bottom: 40px; flex-wrap: wrap;
 }
 .work-title {
   font-family: "Instrument Serif", serif; font-weight: 400;
@@ -523,10 +523,11 @@ body {
 .pill.is-active b { color: var(--bg); opacity: .55; }
 
 /* feature cards — show the whole cover (image or video), no crop */
-.work-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
+.work-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 34px; margin-bottom: 34px; }
 .work-feature {
   display: block; position: relative;
   border-radius: var(--radius); overflow: hidden;
+  padding: 14px 14px 4px;
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)) saturate(180%); -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
   border: 1px solid var(--glass-border);
@@ -543,8 +544,8 @@ body {
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
 .work-feature:hover { transform: translateY(-5px); box-shadow: var(--shadow), 0 34px 66px -30px rgba(0,0,0,.65); }
-.wf-img { display: block; width: 100%; height: auto; }   /* natural 16:9, never cropped */
-.wf-meta { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 16px 22px; }
+.wf-img { display: block; width: 100%; height: auto; border-radius: 16px; }   /* natural 16:9, never cropped, framed inside card */
+.wf-meta { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 20px 10px 16px; }
 .wf-title { font-weight: 600; font-size: 16px; }
 .wf-tag { display: none; }
 /* outstanding call-to-action button */
