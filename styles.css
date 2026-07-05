@@ -507,6 +507,26 @@ body {
   font-size: clamp(38px, 5vw, 64px); letter-spacing: -.01em; line-height: 1;
 }
 .work-title span { color: var(--faint); }
+
+/* grouped work sections */
+.work-group { margin-bottom: 52px; }
+.work-group:last-child { margin-bottom: 0; }
+.wg-head {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 22px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--glass-border);
+}
+.wg-title {
+  font-family: "Instrument Serif", serif; font-weight: 400; font-style: italic;
+  font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -.01em; line-height: 1;
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: monaFlow 9s linear infinite;
+}
+.wg-sub { color: var(--muted); font-size: 14px; font-weight: 400; }
+
 .filters { display: flex; gap: 8px; flex-wrap: wrap; }
 .pill {
   font-family: inherit; font-size: 13px; font-weight: 500;

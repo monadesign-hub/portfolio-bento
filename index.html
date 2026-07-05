@@ -206,72 +206,78 @@
     <section class="view view--work" id="view-work" aria-label="Selected work" hidden>
       <div class="work-head">
         <h2 class="work-title">Selected work<span>(s)</span></h2>
-        <div class="filters" id="filters">
-          <button class="pill is-active" data-filter="all">All <b>5</b></button>
-          <button class="pill" data-filter="ai">AI Product <b>1</b></button>
-          <button class="pill" data-filter="fintech">Fintech <b>1</b></button>
-          <button class="pill" data-filter="creative">Creative <b>1</b></button>
-          <button class="pill" data-filter="vibe">Vibe Coding <b>2</b></button>
-        </div>
       </div>
-      <div class="work-features">
-        <a class="work-feature" data-cat="ai" href="https://aria-case-study-site.vercel.app/" target="_blank" rel="noopener">
-          <img class="wf-img" src="assets/work-aria-v3.webp" alt="AI Agent Loan Underwriting" loading="lazy" />
-          <div class="wf-meta">
-            <div>
+
+      <!-- GROUP 1 · Case Study Deep-Dives -->
+      <section class="work-group">
+        <header class="wg-head">
+          <h3 class="wg-title">Case Study Deep-Dives</h3>
+          <span class="wg-sub">End-to-end product stories — research to shipped craft</span>
+        </header>
+        <div class="work-features">
+          <a class="work-feature" href="https://aria-case-study-site.vercel.app/" target="_blank" rel="noopener">
+            <img class="wf-img" src="assets/work-aria-v3.webp" alt="AI Agent Loan Underwriting" loading="lazy" />
+            <div class="wf-meta">
               <div class="wf-title">Aria — AI Agent Loan Underwriting</div>
-              <div class="wf-tag">AI Product · Multi-agent · Full-stack · RBC / TD</div>
+              <span class="wf-cta">Case study</span>
             </div>
-            <span class="wf-cta">Case study</span>
-          </div>
-        </a>
-        <a class="work-feature" data-cat="fintech" href="https://www.supernovacompanies.com/clients/non-bank-wealth" target="_blank" rel="noopener">
-          <img class="wf-img" src="assets/work-supernova.webp" alt="Supernova Aperture — Collateral Risk Platform" loading="lazy" />
-          <div class="wf-meta">
-            <div>
-              <div class="wf-title">Supernova — Aperture Lending Platform</div>
-              <div class="wf-tag">Fintech · Collateral analytics · Enterprise SaaS</div>
-            </div>
-            <span class="wf-cta">Visit site</span>
-          </div>
-        </a>
-        <a class="work-feature" data-cat="creative" href="https://camlab.fas.harvard.edu/#theme" target="_blank" rel="noopener">
-          <video class="wf-img" autoplay loop muted playsinline poster="assets/work-harvard-poster.webp">
-            <source src="assets/work-harvard.mp4" type="video/mp4" />
-          </video>
-          <div class="wf-meta">
-            <div>
+          </a>
+          <a class="work-feature" href="https://camlab.fas.harvard.edu/#theme" target="_blank" rel="noopener">
+            <video class="wf-img" autoplay loop muted playsinline poster="assets/work-harvard-poster.webp">
+              <source src="assets/work-harvard.mp4" type="video/mp4" />
+            </video>
+            <div class="wf-meta">
               <div class="wf-title">Harvard University — Immersive Museum</div>
-              <div class="wf-tag">Creative · Immersive · 2M+ audience</div>
+              <span class="wf-cta">Visit site</span>
             </div>
-            <span class="wf-cta">Visit site</span>
-          </div>
-        </a>
-        <a class="work-feature" data-cat="vibe" href="https://field-notes-bay-nu.vercel.app/" target="_blank" rel="noopener">
-          <video class="wf-img" autoplay loop muted playsinline poster="assets/work-fieldnotes-poster.webp">
-            <source src="assets/work-fieldnotes.mp4" type="video/mp4" />
-          </video>
-          <div class="wf-meta">
-            <div>
+          </a>
+        </div>
+      </section>
+
+      <!-- GROUP 2 · AI Vibe-Coded Tools -->
+      <section class="work-group">
+        <header class="wg-head">
+          <h3 class="wg-title">AI Vibe-Coded Tools</h3>
+          <span class="wg-sub">Self-built AI web tools, shipped fast</span>
+        </header>
+        <div class="work-features">
+          <a class="work-feature" href="https://field-notes-bay-nu.vercel.app/" target="_blank" rel="noopener">
+            <video class="wf-img" autoplay loop muted playsinline poster="assets/work-fieldnotes-poster.webp">
+              <source src="assets/work-fieldnotes.mp4" type="video/mp4" />
+            </video>
+            <div class="wf-meta">
               <div class="wf-title">Field Notes — AI Events Journal</div>
-              <div class="wf-tag">Vibe Coding · Editorial engine · Auto-updating</div>
+              <span class="wf-cta">Visit site</span>
             </div>
-            <span class="wf-cta">Visit site</span>
-          </div>
-        </a>
-        <a class="work-feature" data-cat="vibe" href="https://designinspiration-iota.vercel.app/" target="_blank" rel="noopener">
-          <video class="wf-img" autoplay loop muted playsinline poster="assets/work-notebook-poster.webp">
-            <source src="assets/work-notebook.mp4" type="video/mp4" />
-          </video>
-          <div class="wf-meta">
-            <div>
+          </a>
+          <a class="work-feature" href="https://designinspiration-iota.vercel.app/" target="_blank" rel="noopener">
+            <video class="wf-img" autoplay loop muted playsinline poster="assets/work-notebook-poster.webp">
+              <source src="assets/work-notebook.mp4" type="video/mp4" />
+            </video>
+            <div class="wf-meta">
               <div class="wf-title">Visual Notebook — Design Inspiration</div>
-              <div class="wf-tag">Vibe Coding · Curated design library</div>
+              <span class="wf-cta">Visit site</span>
             </div>
-            <span class="wf-cta">Visit site</span>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- GROUP 3 · Launched Products -->
+      <section class="work-group">
+        <header class="wg-head">
+          <h3 class="wg-title">Launched Products</h3>
+          <span class="wg-sub">Shipped, in-production, powering real teams</span>
+        </header>
+        <div class="work-features">
+          <a class="work-feature" href="https://www.supernovacompanies.com/clients/non-bank-wealth" target="_blank" rel="noopener">
+            <img class="wf-img" src="assets/work-supernova.webp" alt="Supernova Aperture — Collateral Risk Platform" loading="lazy" />
+            <div class="wf-meta">
+              <div class="wf-title">Supernova — Aperture Lending Platform</div>
+              <span class="wf-cta">Visit site</span>
+            </div>
+          </a>
+        </div>
+      </section>
     </section>
 
     <!-- ============ DOCK ============ -->
