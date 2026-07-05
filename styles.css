@@ -542,17 +542,15 @@ body {
 .wf-cta {
   display: inline-flex; align-items: center; gap: 8px; flex: none;
   font-size: 13.5px; font-weight: 600; color: var(--text); white-space: nowrap;
-  padding: 10px 8px 10px 17px; border-radius: 999px;
+  padding: 10px 18px; border-radius: 999px;
   background: color-mix(in srgb, var(--accent) 15%, var(--glass-bg));
   border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
   box-shadow: 0 1px 0 var(--glass-spec) inset;
   transition: background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--spring);
 }
 .wf-cta::after {
-  content: "↗"; display: grid; place-items: center;
-  width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 700;
-  background: var(--accent); color: #fff;
-  transition: transform .35s var(--spring);
+  content: "↗"; font-size: 15px; font-weight: 700; color: var(--accent);
+  transition: transform .35s var(--spring), color .35s var(--ease);
 }
 .work-feature:hover .wf-cta {
   background: var(--accent); color: #fff;
@@ -560,7 +558,7 @@ body {
   box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 75%, transparent);
   transform: translateY(-1px);
 }
-.work-feature:hover .wf-cta::after { background: #fff; color: var(--accent); transform: translate(2px, -2px); }
+.work-feature:hover .wf-cta::after { color: #fff; transform: translate(2px, -2px); }
 .work-feature.is-hidden { display: none; }
 
 .work-grid {
