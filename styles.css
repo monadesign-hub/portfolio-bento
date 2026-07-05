@@ -453,7 +453,8 @@ body {
 }
 .now-sub {
   position: relative; z-index: 2;
-  font-size: 15px; font-weight: 500; letter-spacing: .01em;
+  font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
+  font-size: 20px; letter-spacing: 0;
   background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
   background-size: 220% auto;
   -webkit-background-clip: text; background-clip: text;
