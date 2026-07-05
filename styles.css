@@ -406,7 +406,7 @@ body {
 :root[data-theme="light"] .mode-ic--sun  { opacity: 0; }
 
 /* ---------- now building ---------- */
-.card--now { display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-decoration: none; color: inherit; cursor: pointer; }
+.card--now { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
 .card--now .card-label { position: absolute; top: 18px; left: 18px; z-index: 3; }
 /* drifting gradient aurora inside the card */
 .card--now .now-aurora {
@@ -429,7 +429,7 @@ body {
   transition: transform .35s var(--ease), color .35s var(--ease);
 }
 .card--now:hover .now-arrow { transform: translate(4px, -4px); color: var(--accent); }
-.now-body { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; position: relative; z-index: 2; }
+.now-body { display: flex; align-items: center; flex: 1; position: relative; z-index: 2; }
 .pulse {
   width: 11px; height: 11px; border-radius: 50%; background: var(--accent);
   display: inline-block; vertical-align: middle; margin: -4px 11px 0 0;
@@ -451,7 +451,15 @@ body {
   -webkit-text-fill-color: transparent; color: transparent;
   animation: monaFlow 8s linear infinite;
 }
-.now-sub { font-size: 12.5px; color: var(--muted); margin-top: 0; }
+.now-sub {
+  position: relative; z-index: 2;
+  font-size: 15px; font-weight: 500; letter-spacing: .01em;
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: monaFlow 9s linear infinite;
+}
 
 /* ---------- clients marquee ---------- */
 .card--clients { display: flex; flex-direction: column; }
