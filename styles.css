@@ -554,16 +554,31 @@ body {
   text-decoration: none; color: inherit;
   transition: transform .5s var(--spring), box-shadow .5s var(--ease);
 }
-/* iOS liquid-glass specular edge stroke */
-.work-card::before {
+/* iOS liquid-glass — soft specular edge (bright top-left, fading round the rim) */
+.work-feature::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit;
   padding: 1px; pointer-events: none; z-index: 4;
-  background: linear-gradient(135deg, var(--glass-spec) 0%, transparent 30%, transparent 68%, color-mix(in srgb, var(--glass-spec) 48%, transparent) 100%);
+  background: linear-gradient(135deg,
+      var(--glass-spec) 0%,
+      transparent 32%,
+      transparent 66%,
+      color-mix(in srgb, var(--glass-spec) 45%, transparent) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
+/* cursor-follow sheen + accent glow — the "liquid" life */
+.work-feature::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; z-index: 3; opacity: 0;
+  transition: opacity .5s var(--ease);
+  background:
+    radial-gradient(260px 260px at var(--mx, 50%) var(--my, 50%), var(--glass-sheen), transparent 60%),
+    radial-gradient(130% 92% at 50% 122%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 62%);
+}
+.work-feature:hover::after { opacity: 1; }
+.work-feature > * { position: relative; z-index: 2; }
 .work-feature:hover { transform: translateY(-5px); box-shadow: var(--shadow), 0 34px 66px -30px rgba(0,0,0,.65); }
-.wf-img { display: block; width: 100%; height: auto; border-radius: 16px; }   /* natural 16:9, framed inside card, never cropped */
+.wf-img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: inset 0 1px 0 var(--glass-spec); }   /* natural 16:9, framed inside card, never cropped */
 .wf-meta { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 20px 10px 16px; }
 .wf-title { font-weight: 600; font-size: 16px; }
 .wf-tag { display: none; }

@@ -212,7 +212,7 @@
 
   /* ---------- liquid-glass cursor sheen ---------- */
   if (!reduce && matchMedia("(pointer:fine)").matches) {
-    $$(".card, .work-card").forEach(el => {
+    $$(".card, .work-feature").forEach(el => {
       el.addEventListener("pointermove", (e) => {
         const r = el.getBoundingClientRect();
         el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
