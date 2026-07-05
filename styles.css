@@ -476,20 +476,20 @@ body {
 }
 .card--clients:hover .clients-aurora { opacity: .9; }
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); margin: auto 0; }
-.marquee-track { display: flex; align-items: center; gap: 52px; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-track { display: flex; align-items: center; gap: 68px; width: max-content; animation: marquee 30s linear infinite; }
 .marquee-track .logo {
   width: auto; flex: none; object-fit: contain;
   filter: brightness(0) invert(1);       /* mono white (dark theme) */
   opacity: .66; transition: opacity .3s;
 }
 /* optically balanced heights — equal visual weight, not equal pixels */
-.marquee-track .logo[alt="Google"]     { height: 30px; }
-.marquee-track .logo[alt="Harvard"]    { height: 30px; }
-.marquee-track .logo[alt="BMO"]        { height: 36px; }
-.marquee-track .logo[alt="BNY"]        { height: 23px; }
-.marquee-track .logo[alt="Nationwide"] { height: 34px; }
-.marquee-track .logo[alt="TD Bank"]    { height: 38px; }
-.marquee-track .logo[alt="Supernova"]  { height: 33px; }
+.marquee-track .logo[alt="Google"]     { height: 42px; }
+.marquee-track .logo[alt="Harvard"]    { height: 42px; }
+.marquee-track .logo[alt="BMO"]        { height: 50px; }
+.marquee-track .logo[alt="BNY"]        { height: 32px; }
+.marquee-track .logo[alt="Nationwide"] { height: 47px; }
+.marquee-track .logo[alt="TD Bank"]    { height: 53px; }
+.marquee-track .logo[alt="Supernova"]  { height: 46px; }
 :root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .5; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track .logo:hover { opacity: 1; }
