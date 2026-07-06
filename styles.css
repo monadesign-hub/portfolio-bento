@@ -345,18 +345,8 @@ body {
 .card--roles { display: flex; flex-direction: column; }
 .roles-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: auto 0; width: 100%; }
 .venn { width: 100%; max-width: 198px; aspect-ratio: 1 / 1; height: auto; flex: none; overflow: visible; }
-.venn-glow { animation: vennBreath 7s ease-in-out infinite; transform-origin: center; }
 .venn-core { animation: vennCore 7s ease-in-out infinite; }
-@keyframes vennBreath { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
 @keyframes vennCore { 0%, 100% { opacity: .55; r: 2.2px; } 50% { opacity: 1; r: 2.8px; } }
-/* fluid, moving color blooms — each drifts on its own phase */
-.venn-glow circle { transform-box: fill-box; transform-origin: center; }
-.venn-glow circle:nth-of-type(1) { animation: floraDriftA 11s ease-in-out infinite; }
-.venn-glow circle:nth-of-type(2) { animation: floraDriftB 14s ease-in-out infinite; }
-.venn-glow circle:nth-of-type(3) { animation: floraDriftC 12s ease-in-out infinite; }
-@keyframes floraDriftA { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(5px,-4px) scale(1.06); } 66% { transform: translate(-4px,3px) scale(.97); } }
-@keyframes floraDriftB { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(-5px,-3px) scale(1.05); } 66% { transform: translate(4px,5px) scale(.96); } }
-@keyframes floraDriftC { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(4px,5px) scale(1.07); } 66% { transform: translate(-5px,-2px) scale(1); } }
 .roles-legend { list-style: none; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 10px; width: 100%; }
 .roles-legend li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; flex: 1 1 0; min-width: 0; }
 .roles-legend .dot {
