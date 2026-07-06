@@ -118,27 +118,40 @@
           <div class="roles-wrap">
             <svg class="venn" viewBox="20 24 160 160" aria-hidden="true">
               <defs>
-                <radialGradient id="g-ai" cx="100" cy="78" r="48" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#75A8FF" stop-opacity=".5"/><stop offset="1" stop-color="#75A8FF" stop-opacity="0"/>
+                <radialGradient id="g-ai" cx="100" cy="78" r="52" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#C4D8FF" stop-opacity=".95"/>
+                  <stop offset=".5" stop-color="#75A8FF" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#75A8FF" stop-opacity="0"/>
                 </radialGradient>
-                <radialGradient id="g-ds" cx="76" cy="122" r="48" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#5FC8FF" stop-opacity=".5"/><stop offset="1" stop-color="#5FC8FF" stop-opacity="0"/>
+                <radialGradient id="g-ds" cx="76" cy="122" r="52" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#B4EAFF" stop-opacity=".95"/>
+                  <stop offset=".5" stop-color="#5FC8FF" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#5FC8FF" stop-opacity="0"/>
                 </radialGradient>
-                <radialGradient id="g-fs" cx="124" cy="122" r="48" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#9E8CFF" stop-opacity=".5"/><stop offset="1" stop-color="#9E8CFF" stop-opacity="0"/>
+                <radialGradient id="g-fs" cx="124" cy="122" r="52" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#D6CBFF" stop-opacity=".95"/>
+                  <stop offset=".5" stop-color="#9E8CFF" stop-opacity=".5"/>
+                  <stop offset="1" stop-color="#9E8CFF" stop-opacity="0"/>
                 </radialGradient>
-                <filter id="venn-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4.5"/></filter>
+                <radialGradient id="g-halo" cx="100" cy="103" r="72" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#9DBBFF" stop-opacity=".28"/>
+                  <stop offset="1" stop-color="#9DBBFF" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="venn-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5.6"/></filter>
+                <filter id="core-glow" x="-400%" y="-400%" width="900%" height="900%"><feGaussianBlur stdDeviation="3.2"/></filter>
               </defs>
+              <circle cx="100" cy="103" r="72" fill="url(#g-halo)"/>
               <g class="venn-glow" filter="url(#venn-soft)" style="mix-blend-mode:screen">
                 <circle cx="100" cy="78" r="46" fill="url(#g-ai)"/>
                 <circle cx="76" cy="122" r="46" fill="url(#g-ds)"/>
                 <circle cx="124" cy="122" r="46" fill="url(#g-fs)"/>
               </g>
               <g fill="none" stroke-width="1">
-                <circle cx="100" cy="78" r="46" stroke="#75A8FF" stroke-opacity=".55"/>
-                <circle cx="76" cy="122" r="46" stroke="#5FC8FF" stroke-opacity=".55"/>
-                <circle cx="124" cy="122" r="46" stroke="#9E8CFF" stroke-opacity=".55"/>
+                <circle cx="100" cy="78" r="46" stroke="#BCD3FF" stroke-opacity=".78"/>
+                <circle cx="76" cy="122" r="46" stroke="#A6E6FF" stroke-opacity=".78"/>
+                <circle cx="124" cy="122" r="46" stroke="#CEC1FF" stroke-opacity=".78"/>
               </g>
+              <circle cx="100" cy="106" r="7" fill="#fff" opacity=".55" filter="url(#core-glow)"/>
               <circle class="venn-core" cx="100" cy="106" r="2.4" fill="#fff"/>
             </svg>
             <ul class="roles-legend">
