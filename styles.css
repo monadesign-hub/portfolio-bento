@@ -502,16 +502,30 @@ body {
 .work-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .work-nav { display: flex; gap: 6px; flex-wrap: wrap; }
 .work-nav a {
+  position: relative;
   font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
   padding: 8px 14px; border-radius: 999px;
-  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  border: 1px solid transparent; background: var(--glass-bg);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-  transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+  transition: color .3s var(--ease), background .3s var(--ease);
+}
+/* delicate flowing-gradient stroke — same brand gradient as the titles */
+.work-nav a::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  padding: 1px; pointer-events: none;
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: .5;
+  animation: monaFlow 9s linear infinite;
+  transition: opacity .3s var(--ease);
 }
 .work-nav a:hover {
-  color: var(--text); border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--text);
   background: color-mix(in srgb, var(--accent) 12%, var(--glass-bg));
 }
+.work-nav a:hover::before { opacity: 1; }
 /* compact icon-button variant of the mode toggle */
 .mode-toggle--btn {
   width: 42px; height: 42px; border-radius: 12px; flex: none;
