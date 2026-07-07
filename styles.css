@@ -528,7 +528,7 @@ body {
   animation: compScroll 48s linear infinite;
 }
 .comp-marquee:hover .comp-track { animation-play-state: paused; }
-.comp-card { flex: none; width: 420px; }
+.comp-card { flex: none; width: 320px; }
 .comp-img {
   display: block; width: 100%; height: auto; border-radius: 20px;
   box-shadow: 0 18px 44px -22px rgba(0,0,0,.6), 0 0 0 1px var(--glass-border);
@@ -539,7 +539,7 @@ body {
   box-shadow: 0 26px 56px -22px rgba(0,0,0,.7), 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .comp-name {
-  margin-top: 16px; font-size: 16px; font-weight: 600; letter-spacing: -.01em;
+  margin-top: 13px; font-size: 15px; font-weight: 600; letter-spacing: -.01em;
   color: var(--text);
 }
 @keyframes compScroll { to { transform: translateX(-50%); } }
