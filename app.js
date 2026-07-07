@@ -222,10 +222,21 @@
   }
 
   /* ---------- theme toggle ---------- */
-  $("#mode-toggle")?.addEventListener("click", () => {
+  const toggleTheme = () => {
     const root = document.documentElement;
     root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-  });
+  };
+  $("#mode-toggle")?.addEventListener("click", toggleTheme);
+  $$(".js-mode-toggle").forEach(b => b.addEventListener("click", toggleTheme));
+
+  /* ---------- work section nav (smooth scroll) ---------- */
+  $$(".work-nav a").forEach(link => link.addEventListener("click", (e) => {
+    const id = link.getAttribute("href");
+    const target = id && document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }));
 
   /* ---------- view switch (dashboard / work) ---------- */
   const views = { dashboard: $("#view-dashboard"), work: $("#view-work") };
