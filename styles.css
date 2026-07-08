@@ -497,9 +497,9 @@ body {
   font-family: "Instrument Serif", serif; font-weight: 400;
   font-size: clamp(38px, 5vw, 64px); letter-spacing: -.01em; line-height: 1;
 }
-.work-title span { color: var(--faint); }
+.work-title span:not([data-i18n]) { color: var(--faint); }
 :root[data-theme="dark"] .work-title { color: #fff; }
-:root[data-theme="dark"] .work-title span { color: rgba(255,255,255,.5); }
+:root[data-theme="dark"] .work-title span:not([data-i18n]) { color: rgba(255,255,255,.5); }
 
 /* work-page tools: section nav + mode toggle */
 .work-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
