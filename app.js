@@ -117,7 +117,7 @@
       "wf.notebook": "Visual Notebook — 设计灵感库",
       "wf.jobs": "SF Design Jobs — 实时招聘看板",
       "wf.w3craft": "W3Craft — 金融科技与 Web3 设计参考",
-      "dock.dashboard": "仪表盘", "dock.work": "作品",
+      "dock.dashboard": "个人简介", "dock.work": "作品",
       "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
     },
   };
