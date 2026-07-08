@@ -96,7 +96,7 @@
       "work.title": "精选作品",
       "nav.case": "案例深度剖析",
       "nav.launched": "已上线产品",
-      "nav.vibe": "AI 氛围编码工具",
+      "nav.vibe": "AI Vibe-Coded Tools",
       "wg.case.sub": "端到端的产品故事——从研究到上线打磨",
       "wf.aria": "Aria — AI 智能体贷款承保",
       "wf.people": "人物与实体 — 数据与角色映射",
