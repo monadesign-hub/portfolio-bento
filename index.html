@@ -42,11 +42,11 @@
             <span class="avatar" aria-hidden="true"></span>
             <div>
               <div class="intro-name">Mona Wang</div>
-              <div class="intro-role">Product Design Engineer</div>
+              <div class="intro-role" data-i18n="role">Product Design Engineer</div>
             </div>
           </header>
-          <h1 class="intro-line">I design &amp; ship <span class="tw" id="typewriter">AI-native products</span><span class="caret" aria-hidden="true"></span></h1>
-          <p class="intro-blurb">I bring fintech &amp; AI products to life end-to-end — from research and systems to full-stack vibe-coding. I push boundaries, take risks, and infuse narrative into the work.</p>
+          <h1 class="intro-line"><span data-i18n="intro.prefix">I design &amp; ship </span><span class="tw" id="typewriter">AI-native products</span><span class="caret" aria-hidden="true"></span></h1>
+          <p class="intro-blurb" data-i18n="intro.blurb">I bring fintech &amp; AI products to life end-to-end — from research and systems to full-stack vibe-coding. I push boundaries, take risks, and infuse narrative into the work.</p>
           <footer class="intro-foot">
             <span id="today">—</span>
             <span class="mono" id="intro-clock">--:--:--</span>
@@ -55,23 +55,23 @@
 
         <!-- GLOBE -->
         <article class="card card--globe" style="--c:3; --r:3;">
-          <span class="card-label">Based in</span>
+          <span class="card-label" data-i18n="label.basedIn">Based in</span>
           <canvas class="globe" id="globe" width="480" height="480" aria-hidden="true"></canvas>
-          <div class="globe-city">San Francisco Bay Area</div>
+          <div class="globe-city" data-i18n="globe.city">San Francisco Bay Area</div>
         </article>
 
         <!-- CONTACT -->
         <article class="card card--contact" style="--c:3; --r:5;">
           <div class="contact-reveal" aria-hidden="true"></div>
           <header class="contact-head">
-            <span class="card-label">Contact</span>
+            <span class="card-label" data-i18n="label.contact">Contact</span>
             <span class="arrow">↗</span>
           </header>
           <ul class="contact-list">
-            <li><span>Email</span><a href="mailto:cw3378@tc.columbia.edu">Copy</a></li>
-            <li><span>Phone</span><a href="tel:+13128682306">(312) 868-2306</a></li>
-            <li><span>Résumé</span><a href="assets/mona-wang-resume.pdf" target="_blank" rel="noopener">View ↗</a></li>
-            <li><span>Location</span><em>SF Bay Area</em></li>
+            <li><span data-i18n="contact.email">Email</span><a href="mailto:cw3378@tc.columbia.edu" data-i18n="contact.copy">Copy</a></li>
+            <li><span data-i18n="contact.phone">Phone</span><a href="tel:+13128682306">(312) 868-2306</a></li>
+            <li><span data-i18n="contact.resume">Résumé</span><a href="assets/mona-wang-resume.pdf" target="_blank" rel="noopener" data-i18n="contact.view">View ↗</a></li>
+            <li><span data-i18n="contact.location">Location</span><em data-i18n="contact.locVal">SF Bay Area</em></li>
           </ul>
           <nav class="contact-social" aria-label="Social">
             <a href="https://www.linkedin.com/in/monawang36/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
@@ -82,9 +82,9 @@
 
         <!-- LOGOTYPE / MOODBOARD -->
         <article class="card card--logo" style="--c:4; --r:3;">
-          <span class="card-label">About me</span>
+          <span class="card-label" data-i18n="label.about">About me</span>
           <div class="logotype" aria-hidden="true">mona</div>
-          <p class="logo-caption">Love crafting,<br/>where design thinking meets AI, from problem framing to pixel-perfect product solutions.</p>
+          <p class="logo-caption" data-i18n="logo.caption">Love crafting,<br/>where design thinking meets AI, from problem framing to pixel-perfect product solutions.</p>
         </article>
 
         <!-- DIGITAL FLORA -->
@@ -103,18 +103,18 @@
 
         <!-- STATS -->
         <article class="card card--stats" style="--c:3; --r:3;">
-          <span class="card-label">Real impact</span>
+          <span class="card-label" data-i18n="label.impact">Real impact</span>
           <div class="stat-grid">
-            <div class="stat"><div class="stat-num">2025</div><div class="stat-cap">iF Design Award</div></div>
-            <div class="stat"><div class="stat-num" data-count="2" data-suffix="M+">0</div><div class="stat-cap">Global audience</div></div>
-            <div class="stat"><div class="stat-num" data-count="20" data-suffix="+">0</div><div class="stat-cap">Design seminars led</div></div>
-            <div class="stat"><div class="stat-num" data-count="15" data-suffix="">0</div><div class="stat-cap">Shipped products</div></div>
+            <div class="stat"><div class="stat-num">2025</div><div class="stat-cap" data-i18n="stat.award">iF Design Award</div></div>
+            <div class="stat"><div class="stat-num" data-count="2" data-suffix="M+">0</div><div class="stat-cap" data-i18n="stat.audience">Global audience</div></div>
+            <div class="stat"><div class="stat-num" data-count="20" data-suffix="+">0</div><div class="stat-cap" data-i18n="stat.seminars">Design seminars led</div></div>
+            <div class="stat"><div class="stat-num" data-count="15" data-suffix="">0</div><div class="stat-cap" data-i18n="stat.shipped">Shipped products</div></div>
           </div>
         </article>
 
         <!-- ROLES (delicate venn) -->
         <article class="card card--roles" style="--c:3; --r:3;">
-          <span class="card-label">Skill sets</span>
+          <span class="card-label" data-i18n="label.skills">Skill sets</span>
           <div class="roles-wrap">
             <svg class="venn" viewBox="20 24 160 160" aria-hidden="true">
               <defs>
@@ -145,16 +145,16 @@
               <circle class="venn-core" cx="100" cy="106" r="1.8" fill="#fff" opacity=".65"/>
             </svg>
             <ul class="roles-legend">
-              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name">AI Product Design Thinking</span></li>
-              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name">Pixel Perfect Design System</span></li>
-              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name">Full-Stack Vibe Coding Deployment</span></li>
+              <li style="--rc:var(--accent)"><span class="dot"></span><span class="rl-name" data-i18n="role.ai">AI Product Design Thinking</span></li>
+              <li style="--rc:var(--accent-2)"><span class="dot"></span><span class="rl-name" data-i18n="role.ds">Pixel Perfect Design System</span></li>
+              <li style="--rc:var(--accent-3)"><span class="dot"></span><span class="rl-name" data-i18n="role.fs">Full-Stack Vibe Coding Deployment</span></li>
             </ul>
           </div>
         </article>
 
         <!-- MODE SWITCH -->
         <article class="card card--mode" style="--c:2; --r:2;">
-          <span class="card-label">Mode</span>
+          <span class="card-label" data-i18n="label.mode">Mode</span>
           <button class="mode-toggle" id="mode-toggle" aria-label="Toggle light / dark mode">
             <svg class="mode-ic mode-ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>
             <svg class="mode-ic mode-ic--sun" viewBox="0 0 24 24" aria-hidden="true">
@@ -173,18 +173,18 @@
         <!-- NOW / BUILDING (links to live case study) -->
         <a class="card card--now" style="--c:4; --r:2;" href="https://aria-case-study-site.vercel.app/" target="_blank" rel="noopener">
           <span class="now-aurora" aria-hidden="true"></span>
-          <span class="card-label">Now building</span>
+          <span class="card-label" data-i18n="label.now">Now building</span>
           <span class="now-arrow" aria-hidden="true">↗</span>
           <div class="now-body">
-            <div class="now-title"><span class="pulse" aria-hidden="true"></span>Aria — AI Underwriting Agent</div>
+            <div class="now-title"><span class="pulse" aria-hidden="true"></span><span data-i18n="now.title">Aria — AI Underwriting Agent</span></div>
           </div>
-          <div class="now-sub">Human-AI Collaboration · Complex Data Workflow</div>
+          <div class="now-sub" data-i18n="now.sub">Human-AI Collaboration · Complex Data Workflow</div>
         </a>
 
         <!-- CLIENTS -->
         <article class="card card--clients" style="--c:6; --r:2;">
           <span class="clients-aurora" aria-hidden="true"></span>
-          <span class="card-label">Trusted by</span>
+          <span class="card-label" data-i18n="label.trusted">Trusted by</span>
           <div class="marquee" aria-hidden="true">
             <div class="marquee-track">
               <img class="logo" src="assets/logos/google.png" alt="Google" />
@@ -211,12 +211,12 @@
     <!-- ============ WORK VIEW ============ -->
     <section class="view view--work" id="view-work" aria-label="Selected work" hidden>
       <div class="work-head">
-        <h2 class="work-title">Selected work<span>(s)</span></h2>
+        <h2 class="work-title"><span data-i18n="work.title">Selected work</span><span>(s)</span></h2>
         <div class="work-tools">
           <nav class="work-nav" aria-label="Sections">
-            <a href="#case-studies">Case Study Deep-Dives</a>
-            <a href="#launched">Launched Products</a>
-            <a href="#vibe-tools">AI Vibe-Coded Tools</a>
+            <a href="#case-studies" data-i18n="nav.case">Case Study Deep-Dives</a>
+            <a href="#launched" data-i18n="nav.launched">Launched Products</a>
+            <a href="#vibe-tools" data-i18n="nav.vibe">AI Vibe-Coded Tools</a>
           </nav>
           <button class="mode-toggle mode-toggle--btn js-mode-toggle" aria-label="Toggle light / dark mode">
             <svg class="mode-ic mode-ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>
@@ -236,22 +236,22 @@
       <!-- GROUP 1 · Case Study Deep-Dives -->
       <section class="work-group" id="case-studies">
         <header class="wg-head">
-          <h3 class="wg-title">Case Study Deep-Dives</h3>
-          <span class="wg-sub">End-to-end product stories — research to shipped craft</span>
+          <h3 class="wg-title" data-i18n="nav.case">Case Study Deep-Dives</h3>
+          <span class="wg-sub" data-i18n="wg.case.sub">End-to-end product stories — research to shipped craft</span>
         </header>
         <div class="work-features">
           <a class="work-feature" href="https://aria-case-study-site.vercel.app/" target="_blank" rel="noopener">
             <img class="wf-img" src="assets/work-aria-v3.webp" alt="AI Agent Loan Underwriting" loading="lazy" />
             <div class="wf-meta">
-              <div class="wf-title">Aria — AI Agent Loan Underwriting</div>
-              <span class="wf-cta">Case study</span>
+              <div class="wf-title" data-i18n="wf.aria">Aria — AI Agent Loan Underwriting</div>
+              <span class="wf-cta" data-i18n="cta.case">Case study</span>
             </div>
           </a>
           <a class="work-feature" href="https://people-entities-case-study.vercel.app/" target="_blank" rel="noopener">
             <img class="wf-img" src="assets/work-people-entities.webp" alt="People & Entities — Product Design Case Study" loading="lazy" />
             <div class="wf-meta">
-              <div class="wf-title">People &amp; Entities — Data &amp; Role Mapping</div>
-              <span class="wf-cta">Case study</span>
+              <div class="wf-title" data-i18n="wf.people">People &amp; Entities — Data &amp; Role Mapping</div>
+              <span class="wf-cta" data-i18n="cta.case">Case study</span>
             </div>
           </a>
         </div>
@@ -260,20 +260,20 @@
       <!-- CORE COMPETENCIES · horizontal scroll -->
       <section class="work-group comp-group">
         <header class="wg-head">
-          <h3 class="wg-title">Core Product Design Competencies</h3>
-          <span class="wg-sub">Where I go deep — AI, workflows, systems, research</span>
+          <h3 class="wg-title" data-i18n="comp.title">Core Product Design Competencies</h3>
+          <span class="wg-sub" data-i18n="comp.sub">Where I go deep — AI, workflows, systems, research</span>
         </header>
         <div class="comp-marquee">
           <div class="comp-track" aria-hidden="false">
-            <div class="comp-card"><img class="comp-img" src="assets/comp-ai-native.webp" alt="AI Native Design" loading="lazy"/><div class="comp-name">AI Native Design</div></div>
-            <div class="comp-card"><img class="comp-img" src="assets/comp-workflow.webp" alt="Complex Workflow" loading="lazy"/><div class="comp-name">Complex Workflow</div></div>
-            <div class="comp-card"><img class="comp-img" src="assets/comp-design-system.webp" alt="Design System" loading="lazy"/><div class="comp-name">Design System</div></div>
-            <div class="comp-card"><img class="comp-img" src="assets/comp-research.webp" alt="Mixed Method Research" loading="lazy"/><div class="comp-name">Mixed Method Research</div></div>
+            <div class="comp-card"><img class="comp-img" src="assets/comp-ai-native.webp" alt="AI Native Design" loading="lazy"/><div class="comp-name" data-i18n="comp.ai">AI Native Design</div></div>
+            <div class="comp-card"><img class="comp-img" src="assets/comp-workflow.webp" alt="Complex Workflow" loading="lazy"/><div class="comp-name" data-i18n="comp.workflow">Complex Workflow</div></div>
+            <div class="comp-card"><img class="comp-img" src="assets/comp-design-system.webp" alt="Design System" loading="lazy"/><div class="comp-name" data-i18n="comp.system">Design System</div></div>
+            <div class="comp-card"><img class="comp-img" src="assets/comp-research.webp" alt="Mixed Method Research" loading="lazy"/><div class="comp-name" data-i18n="comp.research">Mixed Method Research</div></div>
             <!-- duplicate set for seamless loop -->
-            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-ai-native.webp" alt="" loading="lazy"/><div class="comp-name">AI Native Design</div></div>
-            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-workflow.webp" alt="" loading="lazy"/><div class="comp-name">Complex Workflow</div></div>
-            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-design-system.webp" alt="" loading="lazy"/><div class="comp-name">Design System</div></div>
-            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-research.webp" alt="" loading="lazy"/><div class="comp-name">Mixed Method Research</div></div>
+            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-ai-native.webp" alt="" loading="lazy"/><div class="comp-name" data-i18n="comp.ai">AI Native Design</div></div>
+            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-workflow.webp" alt="" loading="lazy"/><div class="comp-name" data-i18n="comp.workflow">Complex Workflow</div></div>
+            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-design-system.webp" alt="" loading="lazy"/><div class="comp-name" data-i18n="comp.system">Design System</div></div>
+            <div class="comp-card" aria-hidden="true"><img class="comp-img" src="assets/comp-research.webp" alt="" loading="lazy"/><div class="comp-name" data-i18n="comp.research">Mixed Method Research</div></div>
           </div>
         </div>
       </section>
@@ -281,15 +281,15 @@
       <!-- GROUP 2 · Launched Products -->
       <section class="work-group" id="launched">
         <header class="wg-head">
-          <h3 class="wg-title">Launched Products</h3>
-          <span class="wg-sub">Shipped, in-production, powering real teams</span>
+          <h3 class="wg-title" data-i18n="nav.launched">Launched Products</h3>
+          <span class="wg-sub" data-i18n="wg.launched.sub">Shipped, in-production, powering real teams</span>
         </header>
         <div class="work-features">
           <a class="work-feature" href="https://www.supernovacompanies.com/clients/non-bank-wealth" target="_blank" rel="noopener">
             <img class="wf-img" src="assets/work-supernova.webp" alt="Supernova Aperture — Collateral Risk Platform" loading="lazy" />
             <div class="wf-meta">
-              <div class="wf-title">Supernova — Aperture Lending Platform</div>
-              <span class="wf-cta">Visit site</span>
+              <div class="wf-title" data-i18n="wf.supernova">Supernova — Aperture Lending Platform</div>
+              <span class="wf-cta" data-i18n="cta.visit">Visit site</span>
             </div>
           </a>
           <a class="work-feature" href="https://camlab.fas.harvard.edu/#theme" target="_blank" rel="noopener">
@@ -297,22 +297,22 @@
               <source src="assets/work-harvard.mp4" type="video/mp4" />
             </video>
             <div class="wf-meta">
-              <div class="wf-title">Harvard University — Immersive Museum</div>
-              <span class="wf-cta">Visit site</span>
+              <div class="wf-title" data-i18n="wf.harvard">Harvard University — Immersive Museum</div>
+              <span class="wf-cta" data-i18n="cta.visit">Visit site</span>
             </div>
           </a>
           <a class="work-feature" href="https://monachuzhewang.com/work/specialists-9bn67" target="_blank" rel="noopener">
             <img class="wf-img" src="assets/work-kaihua.webp" alt="Kaihua Monastery — Immersive Digital Temple" loading="lazy" />
             <div class="wf-meta">
-              <div class="wf-title">Kaihua Monastery — Immersive Digital Temple</div>
-              <span class="wf-cta">Case study</span>
+              <div class="wf-title" data-i18n="wf.kaihua">Kaihua Monastery — Immersive Digital Temple</div>
+              <span class="wf-cta" data-i18n="cta.case">Case study</span>
             </div>
           </a>
           <a class="work-feature" href="https://monachuzhewang.com/work/specialists-9bn67-9f85l" target="_blank" rel="noopener">
             <img class="wf-img" src="assets/work-fintech-edu.webp" alt="Fintech Learning — Investor Comparison Tool" loading="lazy" />
             <div class="wf-meta">
-              <div class="wf-title">Fintech Learning — Investor Comparison Tool</div>
-              <span class="wf-cta">Case study</span>
+              <div class="wf-title" data-i18n="wf.fintech">Fintech Learning — Investor Comparison Tool</div>
+              <span class="wf-cta" data-i18n="cta.case">Case study</span>
             </div>
           </a>
         </div>
@@ -321,8 +321,8 @@
       <!-- GROUP 3 · AI Vibe-Coded Tools -->
       <section class="work-group" id="vibe-tools">
         <header class="wg-head">
-          <h3 class="wg-title">AI Vibe-Coded Tools</h3>
-          <span class="wg-sub">Self-built AI web tools, shipped fast</span>
+          <h3 class="wg-title" data-i18n="nav.vibe">AI Vibe-Coded Tools</h3>
+          <span class="wg-sub" data-i18n="wg.vibe.sub">Self-built AI web tools, shipped fast</span>
         </header>
         <div class="work-features">
           <a class="work-feature" href="https://field-notes-bay-nu.vercel.app/" target="_blank" rel="noopener">
@@ -330,8 +330,8 @@
               <source src="assets/work-fieldnotes.mp4" type="video/mp4" />
             </video>
             <div class="wf-meta">
-              <div class="wf-title">Field Notes — AI Events Journal</div>
-              <span class="wf-cta">Use the tool</span>
+              <div class="wf-title" data-i18n="wf.fieldnotes">Field Notes — AI Events Journal</div>
+              <span class="wf-cta" data-i18n="cta.use">Use the tool</span>
             </div>
           </a>
           <a class="work-feature" href="https://designinspiration-iota.vercel.app/" target="_blank" rel="noopener">
@@ -339,8 +339,8 @@
               <source src="assets/work-notebook.mp4" type="video/mp4" />
             </video>
             <div class="wf-meta">
-              <div class="wf-title">Visual Notebook — Design Inspiration</div>
-              <span class="wf-cta">Use the tool</span>
+              <div class="wf-title" data-i18n="wf.notebook">Visual Notebook — Design Inspiration</div>
+              <span class="wf-cta" data-i18n="cta.use">Use the tool</span>
             </div>
           </a>
           <a class="work-feature" href="https://sf-productdesign66-jobs.vercel.app/" target="_blank" rel="noopener">
@@ -348,8 +348,8 @@
               <source src="assets/work-jobs.mp4" type="video/mp4" />
             </video>
             <div class="wf-meta">
-              <div class="wf-title">SF Design Jobs — Live Job Board</div>
-              <span class="wf-cta">Use the tool</span>
+              <div class="wf-title" data-i18n="wf.jobs">SF Design Jobs — Live Job Board</div>
+              <span class="wf-cta" data-i18n="cta.use">Use the tool</span>
             </div>
           </a>
           <a class="work-feature" href="https://monadesign-hub.github.io/fintech/" target="_blank" rel="noopener">
@@ -357,8 +357,8 @@
               <source src="assets/work-w3craft.mp4" type="video/mp4" />
             </video>
             <div class="wf-meta">
-              <div class="wf-title">W3Craft — Fintech &amp; Web3 Design Reference</div>
-              <span class="wf-cta">Use the tool</span>
+              <div class="wf-title" data-i18n="wf.w3craft">W3Craft — Fintech &amp; Web3 Design Reference</div>
+              <span class="wf-cta" data-i18n="cta.use">Use the tool</span>
             </div>
           </a>
         </div>
@@ -368,9 +368,15 @@
     <!-- ============ DOCK ============ -->
     <nav class="dock" aria-label="View switch" data-active="dashboard">
       <span class="dock-thumb" aria-hidden="true"></span>
-      <button class="seg is-active" data-view="dashboard">Dashboard</button>
-      <button class="seg" data-view="work">Work</button>
+      <button class="seg is-active" data-view="dashboard" data-i18n="dock.dashboard">Dashboard</button>
+      <button class="seg" data-view="work" data-i18n="dock.work">Work</button>
     </nav>
+
+    <!-- LANGUAGE SWITCH -->
+    <button class="lang-toggle" id="lang-toggle" aria-label="Switch language / 切换语言">
+      <span class="lang-seg" data-lang="en">EN</span>
+      <span class="lang-seg" data-lang="zh">中文</span>
+    </button>
   </main>
 
   <script src="globe-data.js"></script>

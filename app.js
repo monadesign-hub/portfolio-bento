@@ -14,10 +14,120 @@
   /* stagger card entrance ------------------------------------ */
   $$(".card").forEach((c, i) => c.style.setProperty("--i", i));
 
+  /* ---------- bilingual dictionary (EN / 中文) ---------- */
+  const I18N = {
+    en: {
+      "role": "Product Design Engineer",
+      "intro.prefix": "I design &amp; ship ",
+      "intro.blurb": "I bring fintech & AI products to life end-to-end — from research and systems to full-stack vibe-coding. I push boundaries, take risks, and infuse narrative into the work.",
+      "label.basedIn": "Based in",
+      "globe.city": "San Francisco Bay Area",
+      "label.contact": "Contact",
+      "contact.email": "Email", "contact.copy": "Copy",
+      "contact.phone": "Phone",
+      "contact.resume": "Résumé", "contact.view": "View ↗",
+      "contact.location": "Location", "contact.locVal": "SF Bay Area",
+      "label.about": "About me",
+      "logo.caption": "Love crafting,<br/>where design thinking meets AI, from problem framing to pixel-perfect product solutions.",
+      "label.impact": "Real impact",
+      "stat.award": "iF Design Award", "stat.audience": "Global audience",
+      "stat.seminars": "Design seminars led", "stat.shipped": "Shipped products",
+      "label.skills": "Skill sets",
+      "role.ai": "AI Product Design Thinking",
+      "role.ds": "Pixel Perfect Design System",
+      "role.fs": "Full-Stack Vibe Coding Deployment",
+      "label.mode": "Mode",
+      "label.now": "Now building",
+      "now.title": "Aria — AI Underwriting Agent",
+      "now.sub": "Human-AI Collaboration · Complex Data Workflow",
+      "label.trusted": "Trusted by",
+      "work.title": "Selected work",
+      "nav.case": "Case Study Deep-Dives",
+      "nav.launched": "Launched Products",
+      "nav.vibe": "AI Vibe-Coded Tools",
+      "wg.case.sub": "End-to-end product stories — research to shipped craft",
+      "wf.aria": "Aria — AI Agent Loan Underwriting",
+      "wf.people": "People & Entities — Data & Role Mapping",
+      "cta.case": "Case study",
+      "comp.title": "Core Product Design Competencies",
+      "comp.sub": "Where I go deep — AI, workflows, systems, research",
+      "comp.ai": "AI Native Design", "comp.workflow": "Complex Workflow",
+      "comp.system": "Design System", "comp.research": "Mixed Method Research",
+      "wg.launched.sub": "Shipped, in-production, powering real teams",
+      "wf.supernova": "Supernova — Aperture Lending Platform",
+      "cta.visit": "Visit site",
+      "wf.harvard": "Harvard University — Immersive Museum",
+      "wf.kaihua": "Kaihua Monastery — Immersive Digital Temple",
+      "wf.fintech": "Fintech Learning — Investor Comparison Tool",
+      "wg.vibe.sub": "Self-built AI web tools, shipped fast",
+      "wf.fieldnotes": "Field Notes — AI Events Journal",
+      "cta.use": "Use the tool",
+      "wf.notebook": "Visual Notebook — Design Inspiration",
+      "wf.jobs": "SF Design Jobs — Live Job Board",
+      "wf.w3craft": "W3Craft — Fintech & Web3 Design Reference",
+      "dock.dashboard": "Dashboard", "dock.work": "Work",
+      "tw": ["AI-native products", "fintech systems", "human-centered tools", "design systems"],
+    },
+    zh: {
+      "role": "产品设计工程师",
+      "intro.prefix": "我设计并交付 ",
+      "intro.blurb": "我端到端地打造金融科技与 AI 产品——从用户研究、系统设计到全栈氛围编码。我勇于突破、敢于冒险，并为作品注入叙事。",
+      "label.basedIn": "所在地",
+      "globe.city": "旧金山湾区",
+      "label.contact": "联系方式",
+      "contact.email": "邮箱", "contact.copy": "复制",
+      "contact.phone": "电话",
+      "contact.resume": "简历", "contact.view": "查看 ↗",
+      "contact.location": "位置", "contact.locVal": "旧金山湾区",
+      "label.about": "关于我",
+      "logo.caption": "热爱匠心打磨，<br/>让设计思维与 AI 相遇，从问题定义到像素级完美的产品方案。",
+      "label.impact": "真实影响力",
+      "stat.award": "iF 设计奖", "stat.audience": "全球用户",
+      "stat.seminars": "主讲设计讲座", "stat.shipped": "上线产品",
+      "label.skills": "技能领域",
+      "role.ai": "AI 产品设计思维",
+      "role.ds": "像素级设计系统",
+      "role.fs": "全栈氛围编码部署",
+      "label.mode": "模式",
+      "label.now": "正在打造",
+      "now.title": "Aria — AI 承保智能体",
+      "now.sub": "人机协作 · 复杂数据工作流",
+      "label.trusted": "合作信任",
+      "work.title": "精选作品",
+      "nav.case": "案例深度剖析",
+      "nav.launched": "已上线产品",
+      "nav.vibe": "AI 氛围编码工具",
+      "wg.case.sub": "端到端的产品故事——从研究到上线打磨",
+      "wf.aria": "Aria — AI 智能体贷款承保",
+      "wf.people": "人物与实体 — 数据与角色映射",
+      "cta.case": "案例研究",
+      "comp.title": "核心产品设计能力",
+      "comp.sub": "我深耕的领域——AI、工作流、系统、研究",
+      "comp.ai": "AI 原生设计", "comp.workflow": "复杂工作流",
+      "comp.system": "设计系统", "comp.research": "混合方法研究",
+      "wg.launched.sub": "已上线投产，服务真实团队",
+      "wf.supernova": "Supernova — Aperture 借贷平台",
+      "cta.visit": "访问网站",
+      "wf.harvard": "哈佛大学 — 沉浸式博物馆",
+      "wf.kaihua": "开化寺 — 沉浸式数字庙宇",
+      "wf.fintech": "金融科技学习 — 投资者对比工具",
+      "wg.vibe.sub": "自主打造的 AI 网页工具，快速上线",
+      "wf.fieldnotes": "Field Notes — AI 活动手记",
+      "cta.use": "使用工具",
+      "wf.notebook": "Visual Notebook — 设计灵感库",
+      "wf.jobs": "SF Design Jobs — 实时招聘看板",
+      "wf.w3craft": "W3Craft — 金融科技与 Web3 设计参考",
+      "dock.dashboard": "仪表盘", "dock.work": "作品",
+      "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
+    },
+  };
+  let LANG = localStorage.getItem("lang") || params.get("lang") || "en";
+  if (LANG !== "zh") LANG = "en";
+
   /* date + clock text ---------------------------------------- */
   const today = $("#today");
   const introClock = $("#intro-clock");
-  const fmtDate = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  let fmtDate = new Intl.DateTimeFormat(LANG === "zh" ? "zh-CN" : "en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
   function tickText() {
     const d = new Date();
     if (today) today.textContent = fmtDate.format(d);
@@ -25,22 +135,46 @@
   }
   tickText(); setInterval(tickText, 1000);
 
-  /* typewriter ----------------------------------------------- */
+  /* typewriter (lang-aware) ---------------------------------- */
   const tw = $("#typewriter");
-  const words = ["AI-native products", "fintech systems", "human-centered tools", "design systems"];
+  let twWords = I18N[LANG].tw;
+  let wi = 0, ci = 0, deleting = false;
   if (tw && !reduce) {
-    let wi = 0, ci = 0, deleting = false;
     tw.textContent = "";
     const step = () => {
-      const w = words[wi];
+      const w = twWords[wi % twWords.length];
       ci += deleting ? -1 : 1;
+      if (ci < 0) ci = 0;
       tw.textContent = w.slice(0, ci);
       let delay = deleting ? 45 : 85;
-      if (!deleting && ci === w.length) { deleting = true; delay = 1700; }
-      else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 320; }
+      if (!deleting && ci >= w.length) { deleting = true; delay = 1700; }
+      else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % twWords.length; delay = 320; }
       setTimeout(step, delay);
     };
     setTimeout(step, 900);
+  } else if (tw) {
+    tw.textContent = twWords[0];
+  }
+
+  /* ---------- apply language ---------- */
+  function applyLang(lang) {
+    LANG = lang === "zh" ? "zh" : "en";
+    localStorage.setItem("lang", LANG);
+    document.documentElement.lang = LANG;
+    const dict = I18N[LANG];
+    $$("[data-i18n]").forEach(el => {
+      const v = dict[el.getAttribute("data-i18n")];
+      if (v == null) return;
+      if (v.indexOf("<") !== -1 || v.indexOf("&") !== -1) el.innerHTML = v;
+      else el.textContent = v;
+    });
+    fmtDate = new Intl.DateTimeFormat(LANG === "zh" ? "zh-CN" : "en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+    tickText();
+    twWords = dict.tw;
+    wi = 0; ci = 0; deleting = false;
+    if (tw && reduce) tw.textContent = twWords[0];
+    const lt = $("#lang-toggle");
+    if (lt) lt.dataset.lang = LANG;
   }
 
   /* ---------- dotted land globe (equirectangular land mask) ---------- */
@@ -253,6 +387,15 @@
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   }));
   if (params.get("view") === "work") $('.seg[data-view="work"]')?.click();
+
+  /* ---------- language toggle ---------- */
+  const langToggle = $("#lang-toggle");
+  langToggle?.addEventListener("click", () => applyLang(LANG === "en" ? "zh" : "en"));
+  $$(".lang-seg").forEach(s => s.addEventListener("click", (e) => {
+    e.stopPropagation();
+    applyLang(s.dataset.lang);
+  }));
+  applyLang(LANG);
 
   /* ---------- work filters ---------- */
   const cards = $$(".work-card, .work-feature");
