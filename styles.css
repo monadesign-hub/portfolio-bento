@@ -224,7 +224,7 @@ body {
   animation: blink 1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
-.intro-blurb { font-size: 13.5px; line-height: 1.5; color: var(--muted); max-width: 46ch; }
+.intro-blurb { font-size: 13.5px; line-height: 1.5; color: var(--muted); max-width: 72ch; }
 .intro-foot {
   display: flex; justify-content: space-between; align-items: center;
   font-size: 12px; color: var(--faint); border-top: 1px solid var(--line); padding-top: 12px;
