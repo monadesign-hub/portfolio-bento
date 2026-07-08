@@ -90,7 +90,7 @@
       "role.fs": "全栈氛围编码部署",
       "label.mode": "模式",
       "label.now": "正在打造",
-      "now.title": "Aria — AI 承保智能体",
+      "now.title": "Aria — AI Agent 银行信贷系统",
       "now.sub": "人机协作 · 复杂数据工作流",
       "label.trusted": "合作信任",
       "work.title": "精选作品",
