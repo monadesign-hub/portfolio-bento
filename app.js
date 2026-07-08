@@ -121,7 +121,7 @@
       "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
     },
   };
-  let LANG = localStorage.getItem("lang") || params.get("lang") || "en";
+  let LANG = params.get("lang") || localStorage.getItem("lang") || "en";
   if (LANG !== "zh") LANG = "en";
 
   /* date + clock text ---------------------------------------- */
@@ -173,8 +173,7 @@
     twWords = dict.tw;
     wi = 0; ci = 0; deleting = false;
     if (tw && reduce) tw.textContent = twWords[0];
-    const lt = $("#lang-toggle");
-    if (lt) lt.dataset.lang = LANG;
+    $$(".lang-toggle").forEach(lt => lt.dataset.lang = LANG);
   }
 
   /* ---------- dotted land globe (equirectangular land mask) ---------- */
@@ -378,6 +377,7 @@
   $$(".seg").forEach(seg => seg.addEventListener("click", () => {
     const v = seg.dataset.view;
     if (dock) dock.dataset.active = v;
+    document.body.dataset.view = v;
     $$(".seg").forEach(s => s.classList.toggle("is-active", s === seg));
     for (const key in views) {
       const on = key === v;
@@ -388,9 +388,8 @@
   }));
   if (params.get("view") === "work") $('.seg[data-view="work"]')?.click();
 
-  /* ---------- language toggle ---------- */
-  const langToggle = $("#lang-toggle");
-  langToggle?.addEventListener("click", () => applyLang(LANG === "en" ? "zh" : "en"));
+  /* ---------- language toggle (floating + inline, kept in sync) ---------- */
+  $$(".lang-toggle").forEach(lt => lt.addEventListener("click", () => applyLang(LANG === "en" ? "zh" : "en")));
   $$(".lang-seg").forEach(s => s.addEventListener("click", (e) => {
     e.stopPropagation();
     applyLang(s.dataset.lang);
