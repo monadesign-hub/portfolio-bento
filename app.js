@@ -65,7 +65,7 @@
       "wf.notebook": "Visual Notebook — Design Inspiration",
       "wf.jobs": "SF Design Jobs — Live Job Board",
       "wf.w3craft": "W3Craft — Fintech & Web3 Design Reference",
-      "dock.dashboard": "Dashboard", "dock.work": "Work",
+      "dock.dashboard": "About Me", "dock.work": "Work",
       "tw": ["AI-native products", "fintech systems", "human-centered tools", "design systems"],
     },
     zh: {
