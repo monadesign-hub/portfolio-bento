@@ -603,11 +603,11 @@ body {
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 .launch-track {
-  display: flex; align-items: center; gap: 28px; width: max-content;
-  animation: compScroll 55s linear infinite reverse;
+  display: flex; align-items: center; gap: 40px; width: max-content;
+  animation: compScroll 48s linear infinite;
 }
 .launch-marquee:hover .launch-track { animation-play-state: paused; }
-.launch-card { flex: none; width: 460px; }
+.launch-card { flex: none; width: 400px; }
 .launch-img {
   display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
   border-radius: 20px;
@@ -619,7 +619,6 @@ body {
   box-shadow: 0 26px 56px -22px rgba(0,0,0,.7), 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 @media (prefers-reduced-motion: reduce) { .launch-track { animation: none; } }
-@media (max-width: 560px) { .launch-card { width: 300px; } }
 
 .filters { display: flex; gap: 8px; flex-wrap: wrap; }
 .pill {
