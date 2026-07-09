@@ -604,7 +604,7 @@ body {
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 .launch-track {
-  display: flex; align-items: center; width: max-content;
+  display: flex; align-items: flex-start; width: max-content;
   animation: compScroll 48s linear infinite;
   will-change: transform; backface-visibility: hidden;
 }
@@ -619,6 +619,10 @@ body {
 .launch-card:hover .launch-img {
   transform: translateY(-5px);
   box-shadow: 0 26px 56px -22px rgba(0,0,0,.7), 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.launch-name {
+  margin-top: 13px; font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+  color: var(--text);
 }
 @media (prefers-reduced-motion: reduce) { .launch-track { animation: none; } }
 

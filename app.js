@@ -66,6 +66,10 @@
       "wf.jobs": "SF Design Jobs — Live Job Board",
       "wf.w3craft": "W3Craft — Fintech & Web3 Design Reference",
       "dock.dashboard": "About Me", "dock.work": "Work",
+      "launch.poster": "Harvard CAMLab — Event Poster Series",
+      "launch.moma": "MoMA Art Guide — Interactive Art History",
+      "launch.mhouse": "MHouse Chicago — Beverage E-Commerce",
+      "launch.health": "Mental Health — Therapy Booking App",
       "tw": ["AI-native products", "fintech systems", "human-centered tools", "design systems"],
     },
     zh: {
@@ -118,6 +122,10 @@
       "wf.jobs": "SF Design Jobs — 实时招聘看板",
       "wf.w3craft": "W3Craft — 金融科技与 Web3 设计参考",
       "dock.dashboard": "个人简介", "dock.work": "作品",
+      "launch.poster": "哈佛 CAMLab — 活动海报系列",
+      "launch.moma": "MoMA 艺术导览 — 互动艺术史",
+      "launch.mhouse": "MHouse 芝加哥 — 酒饮电商",
+      "launch.health": "心理健康 — 心理咨询预约应用",
       "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
     },
   };
