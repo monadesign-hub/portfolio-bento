@@ -598,7 +598,7 @@ body {
 
 /* ---------- more launched · sliding cover gallery ---------- */
 .launch-marquee {
-  margin-top: 30px;
+  margin-top: 64px; margin-bottom: 20px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
