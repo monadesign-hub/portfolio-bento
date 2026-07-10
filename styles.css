@@ -55,7 +55,10 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; background: var(--bg); }
+/* keep native UI (scrollbars, form controls) matched to the active theme */
+:root[data-theme="dark"]  { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
 
 body {
   font-family: var(--font-ui);
