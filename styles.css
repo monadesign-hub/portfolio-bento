@@ -873,6 +873,16 @@ body {
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 84px; }
   .card { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; }
   .card--flora { grid-row: auto / span 4 !important; }
+
+  /* mobile-only: enlarge "mona" logotype, Aria title, mode toggle */
+  .logotype { font-size: 108px; }
+  .now-title { font-size: clamp(30px, 8.5vw, 40px); }
+  .mode-toggle { height: 70px; border-radius: 22px; }
+  .mode-ic { width: 30px; height: 30px; }
+  .mode-ic--moon { left: 24px; }
+  .mode-ic--sun  { right: 24px; }
+  .mode-orb { width: 48px; height: 48px; left: 11px; }
+  :root[data-theme="light"] .mode-orb { left: calc(100% - 59px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
