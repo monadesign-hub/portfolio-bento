@@ -873,6 +873,7 @@ body {
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 84px; }
   .card { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; }
   .card--flora { grid-row: auto / span 4 !important; }
+  .card--roles { grid-row: auto / span 4 !important; }   /* room for the 2-line venn legend */
 
   /* mobile-only: enlarge "mona" logotype, Aria title, mode toggle */
   .logotype { font-size: clamp(104px, 34vw, 140px); }
