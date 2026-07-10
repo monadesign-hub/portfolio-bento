@@ -376,7 +376,7 @@ body {
 .card--mode .card-label { position: absolute; top: 18px; left: 18px; z-index: 3; }
 .mode-toggle {
   margin: 0;
-  width: 100%; height: 58px; border-radius: 20px;
+  width: 100%; height: 64px; border-radius: 22px;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
@@ -387,18 +387,18 @@ body {
 /* sun / moon icons on the track */
 .mode-ic {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 23px; height: 23px; color: var(--muted); pointer-events: none; z-index: 1;
+  width: 28px; height: 28px; color: var(--muted); pointer-events: none; z-index: 1;
   transition: color .5s var(--ease);
 }
-.mode-ic--moon { left: 20px; }
-.mode-ic--sun  { right: 20px; }
+.mode-ic--moon { left: 22px; }
+.mode-ic--sun  { right: 22px; }
 /* the visible (destination) icon reads brighter */
 :root[data-theme="dark"]  .mode-ic--sun  { color: color-mix(in srgb, var(--accent-2) 55%, #fff); }
 :root[data-theme="light"] .mode-ic--moon { color: color-mix(in srgb, var(--accent) 60%, var(--text)); }
 /* crescent-moon thumb */
 .mode-orb {
-  position: absolute; z-index: 2; top: 50%; left: 10px; transform: translateY(-50%);
-  width: 38px; height: 38px; border-radius: 50%;
+  position: absolute; z-index: 2; top: 50%; left: 11px; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #fdfdff, #cdced4);
   -webkit-mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
           mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
@@ -406,7 +406,7 @@ body {
   transition: left .55s var(--spring), background .5s var(--ease);
 }
 :root[data-theme="light"] .mode-orb {
-  left: calc(100% - 48px);
+  left: calc(100% - 55px);
   background: radial-gradient(circle at 34% 28%, #fff, var(--accent-2) 90%);
   -webkit-mask: none; mask: none;                     /* full disc = sun */
   filter: drop-shadow(0 1px 4px rgba(90,150,255,.45));
