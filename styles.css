@@ -931,3 +931,8 @@ body {
 :root[data-theme="light"] .wg-title {
   background-image: linear-gradient(100deg, #1e56cf, #5a44b8, #2159d6, #1e56cf);
 }
+/* mona logotype (decorative) — richer, more colorful flowing gradient in light mode */
+:root[data-theme="light"] .logotype {
+  background-image: linear-gradient(105deg, #1e56cf, #5a44b8, #8b35cc, #c23a95, #8b35cc, #5a44b8, #1e56cf);
+  background-size: 300% auto;
+}
