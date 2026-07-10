@@ -263,6 +263,7 @@ body {
   color: var(--text); transition: color .3s var(--ease);
 }
 .copy-email:hover { color: var(--accent); }
+.copy-email .copy-email-text { color: inherit; }   /* white (not the muted label grey); follows hover/copied */
 .copy-ic, .copy-ok { flex: none; }
 .copy-ok { display: none; color: var(--accent-2); }
 .copy-email.is-copied { color: var(--accent-2); }
