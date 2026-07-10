@@ -370,6 +370,23 @@
   $("#mode-toggle")?.addEventListener("click", toggleTheme);
   $$(".js-mode-toggle").forEach(b => b.addEventListener("click", toggleTheme));
 
+  /* ---------- copy-to-clipboard (email) ---------- */
+  $$(".js-copy").forEach(btn => btn.addEventListener("click", async () => {
+    const text = btn.dataset.copy || "";
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      ta.remove();
+    }
+    btn.classList.add("is-copied");
+    clearTimeout(btn._copyT);
+    btn._copyT = setTimeout(() => btn.classList.remove("is-copied"), 1500);
+  }));
+
   /* ---------- work section nav (smooth scroll) ---------- */
   $$(".work-nav a").forEach(link => link.addEventListener("click", (e) => {
     const id = link.getAttribute("href");
