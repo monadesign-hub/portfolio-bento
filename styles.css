@@ -39,8 +39,8 @@
   --card: #ffffff;
   --card-hi: #fbfaf7;
   --text: #17171b;
-  --muted: #6c6c74;
-  --faint: #a3a3ab;
+  --muted: #5a5a62;   /* WCAG: 6.8:1 on white (was #6c6c74 = 5.2, failed on glass) */
+  --faint: #606067;   /* WCAG: >=4.6:1 on all card bgs (was #a3a3ab = 2.5, failed) */
   --line: rgba(0,0,0,.08);
   --line-hi: rgba(0,0,0,.18);
   /* liquid glass */
@@ -503,7 +503,7 @@ body {
 .marquee-track .logo[alt="Nationwide"] { height: 47px; }
 .marquee-track .logo[alt="TD Bank"]    { height: 53px; }
 .marquee-track .logo[alt="Supernova"]  { height: 60px; }
-:root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .5; }
+:root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .72; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track .logo:hover { opacity: 1; }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -896,4 +896,38 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .card { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   WCAG AA — LIGHT MODE TEXT CONTRAST
+   Dark mode is untouched. Light mode: the brand blue/gradient
+   text was 1.4–2.4:1 (fails). Darkened to an "ink blue" for
+   >=4.5:1 body text and >=3:1 for large text & graphics.
+   ============================================================ */
+/* accent-colored text → ink blue #1e56cf (6.4:1 white / 5.2:1 beige) */
+:root[data-theme="light"] .tw,
+:root[data-theme="light"] .globe-city,
+:root[data-theme="light"] .contact-list a:hover,
+:root[data-theme="light"] .copy-email:hover,
+:root[data-theme="light"] .copy-ok,
+:root[data-theme="light"] .copy-email.is-copied,
+:root[data-theme="light"] .card--contact:hover .arrow,
+:root[data-theme="light"] .contact-social a:hover,
+:root[data-theme="light"] .card--now:hover .now-arrow,
+:root[data-theme="light"] .wf-cta::after { color: #1e56cf; }
+:root[data-theme="light"] .caret { background: #1e56cf; }
+:root[data-theme="light"] .contact-social a:hover { border-color: #1e56cf; }
+
+/* venn legend dots — non-text graphics need >=3:1 */
+:root[data-theme="light"] .roles-legend li:nth-child(1) .dot { background: #1e56cf; }
+:root[data-theme="light"] .roles-legend li:nth-child(2) .dot { background: #0e7fa0; }
+:root[data-theme="light"] .roles-legend li:nth-child(3) .dot { background: #5a44b8; }
+
+/* gradient (background-clip) text → dark blue→purple gradient, every stop >=4.5:1 */
+:root[data-theme="light"] .logotype,
+:root[data-theme="light"] .stat-num,
+:root[data-theme="light"] .now-title,
+:root[data-theme="light"] .now-sub,
+:root[data-theme="light"] .wg-title {
+  background-image: linear-gradient(100deg, #1e56cf, #5a44b8, #2159d6, #1e56cf);
 }
