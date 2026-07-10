@@ -208,8 +208,8 @@
       </div>
     </section>
 
-    <!-- ============ WORK VIEW ============ -->
-    <section class="view view--work" id="view-work" aria-label="Selected work" hidden>
+    <!-- ============ SELECTED WORK (same page, below About Me) ============ -->
+    <section class="view view--work" id="view-work" aria-label="Selected work">
       <div class="work-head">
         <h2 class="work-title"><span data-i18n="work.title">Selected work</span><span>(s)</span></h2>
         <div class="work-tools">
@@ -218,22 +218,6 @@
             <a href="#launched" data-i18n="nav.launched">Launched Products</a>
             <a href="#vibe-tools" data-i18n="nav.vibe">AI Vibe-Coded Tools</a>
           </nav>
-          <button class="lang-toggle lang-toggle--inline" aria-label="Switch language / 切换语言">
-            <span class="lang-seg" data-lang="en">EN</span>
-            <span class="lang-seg" data-lang="zh">中文</span>
-          </button>
-          <button class="mode-toggle mode-toggle--btn js-mode-toggle" aria-label="Toggle light / dark mode">
-            <svg class="mode-ic mode-ic--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>
-            <svg class="mode-ic mode-ic--sun" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
-              <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <line x1="12" y1="2.5" x2="12" y2="4.8"/><line x1="12" y1="19.2" x2="12" y2="21.5"/>
-                <line x1="2.5" y1="12" x2="4.8" y2="12"/><line x1="19.2" y1="12" x2="21.5" y2="12"/>
-                <line x1="5.4" y1="5.4" x2="7" y2="7"/><line x1="17" y1="17" x2="18.6" y2="18.6"/>
-                <line x1="5.4" y1="18.6" x2="7" y2="17"/><line x1="17" y1="7" x2="18.6" y2="5.4"/>
-              </g>
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -384,12 +368,6 @@
       </section>
     </section>
 
-    <!-- ============ DOCK ============ -->
-    <nav class="dock" aria-label="View switch" data-active="dashboard">
-      <span class="dock-thumb" aria-hidden="true"></span>
-      <button class="seg is-active" data-view="dashboard" data-i18n="dock.dashboard">About Me</button>
-      <button class="seg" data-view="work" data-i18n="dock.work">Work</button>
-    </nav>
   </main>
 
   <!-- LANGUAGE SWITCH (floating, dashboard) -->

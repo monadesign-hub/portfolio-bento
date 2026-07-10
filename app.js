@@ -379,22 +379,10 @@
     target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }));
 
-  /* ---------- view switch (dashboard / work) ---------- */
-  const views = { dashboard: $("#view-dashboard"), work: $("#view-work") };
-  const dock = $(".dock");
-  $$(".seg").forEach(seg => seg.addEventListener("click", () => {
-    const v = seg.dataset.view;
-    if (dock) dock.dataset.active = v;
-    document.body.dataset.view = v;
-    $$(".seg").forEach(s => s.classList.toggle("is-active", s === seg));
-    for (const key in views) {
-      const on = key === v;
-      views[key].classList.toggle("is-active", on);
-      views[key].hidden = !on;
-    }
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  }));
-  if (params.get("view") === "work") $('.seg[data-view="work"]')?.click();
+  /* ---------- deep-link: ?view=work jumps to the work section ---------- */
+  if (params.get("view") === "work") {
+    requestAnimationFrame(() => $("#view-work")?.scrollIntoView({ behavior: "auto", block: "start" }));
+  }
 
   /* ---------- language toggle (floating + inline, kept in sync) ---------- */
   $$(".lang-toggle").forEach(lt => lt.addEventListener("click", () => applyLang(LANG === "en" ? "zh" : "en")));
