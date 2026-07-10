@@ -875,7 +875,7 @@ body {
   .card--flora { grid-row: auto / span 4 !important; }
 
   /* mobile-only: enlarge "mona" logotype, Aria title, mode toggle */
-  .logotype { font-size: 108px; }
+  .logotype { font-size: clamp(104px, 34vw, 140px); }
   .now-title { font-size: clamp(30px, 8.5vw, 40px); }
   .mode-toggle { height: 70px; border-radius: 22px; }
   .mode-ic { width: 30px; height: 30px; }
