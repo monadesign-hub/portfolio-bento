@@ -829,6 +829,9 @@ body {
 /* inline variant — matches the mode button height in the work toolbar */
 .lang-toggle--inline { padding: 3px; box-shadow: 0 1px 0 rgba(255,255,255,.05) inset; }
 .lang-toggle--inline .lang-seg { padding: 6px 11px; font-size: 12px; }
+/* intro-card variant — sits in the top-right corner of the intro header */
+.lang-toggle--intro { margin-left: auto; align-self: center; padding: 3px; }
+.lang-toggle--intro .lang-seg { padding: 5px 11px; font-size: 12px; }
 
 .lang-seg {
   position: relative; z-index: 2; padding: 6px 12px; border-radius: 999px;
