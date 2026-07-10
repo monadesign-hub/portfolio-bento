@@ -347,7 +347,7 @@ body {
 .stat:nth-child(-n+2)  { border-bottom: 1px solid var(--line); }
 .stat-num {
   font-family: "Instrument Serif", serif;
-  font-size: 40px; line-height: 1;
+  font-size: 50px; line-height: 1;
   font-variant-numeric: tabular-nums;
   background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
   background-size: 220% auto;
