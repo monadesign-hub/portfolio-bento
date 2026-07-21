@@ -876,21 +876,48 @@ body {
   .work-tools { gap: 10px; }
   .now-title { white-space: normal; }
   .intro-line { overflow-wrap: anywhere; }
-  .stage { padding: 18px 14px 110px; }
-  .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 84px; }
-  .card { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; }
-  .card--flora { grid-row: auto / span 4 !important; }
-  .card--roles { grid-row: auto / span 4 !important; }   /* room for the 2-line venn legend */
+  .stage { padding: 16px 12px 96px; }
 
-  /* mobile-only: enlarge "mona" logotype, Aria title, mode toggle */
-  .logotype { font-size: clamp(104px, 34vw, 140px); }
-  .now-title { font-size: clamp(30px, 8.5vw, 40px); }
-  .mode-toggle { height: 70px; border-radius: 22px; }
-  .mode-ic { width: 30px; height: 30px; }
-  .mode-ic--moon { left: 24px; }
-  .mode-ic--sun  { right: 24px; }
-  .mode-orb { width: 48px; height: 48px; left: 11px; }
-  :root[data-theme="light"] .mode-orb { left: calc(100% - 59px); }
+  /* ---------- Apple-style compact bento (mobile) ----------
+     2-column tile grid: compact widgets pair two-up; the hero and
+     the text-heavy cards (contact, Now-building, clients marquee)
+     run full width so nothing has to clip. `order` pairs tiles with
+     no gaps; minmax(_, auto) rows grow to fit content. Collapses ~10
+     stacked full-width cards (6–7 screens) down to ~2 screens.
+       intro(full) · globe|mode · about|flora · impact|skills · contact(full) · now(full) · clients(full) */
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(60px, auto); gap: 12px; }
+  .card { grid-column: auto / span 1 !important; grid-row: auto / span 3 !important; padding: 15px; min-width: 0; }
+  .card--intro   { grid-column: 1 / -1 !important; grid-row: auto / span 4 !important; order: 1; padding: 18px; }
+  .card--globe   { order: 2; }
+  .card--mode    { order: 3; }
+  .card--logo    { order: 4; }
+  .card--flora   { order: 5; }
+  .card--stats   { order: 6; }
+  .card--roles   { order: 7; }
+  .card--contact { grid-column: 1 / -1 !important; order: 8; }
+  .card--now     { grid-column: 1 / -1 !important; grid-row: auto / span 2 !important; order: 9; }
+  .card--clients { grid-column: 1 / -1 !important; grid-row: auto / span 2 !important; order: 10; }
+
+  /* contact is full-width: keep the label→value rows roomy */
+  .contact-list li { padding: 9px 0; font-size: 13px; }
+
+  /* re-fit widget internals so the paired tiles never clip */
+  .intro-line   { font-size: clamp(25px, 6.6vw, 34px); }
+  .intro-blurb  { font-size: 12.5px; }
+  .globe-city   { font-size: 11px; white-space: normal; text-align: center; }
+  .logotype     { font-size: clamp(48px, 14vw, 74px); }
+  .logo-caption { font-size: 11.5px; }
+  .stat-num     { font-size: clamp(22px, 6.4vw, 30px); }
+  .stat-cap     { font-size: 10px; }
+  .rl-name      { font-size: 9.5px; }
+  .now-title    { font-size: clamp(21px, 6vw, 30px); }
+  .now-sub      { font-size: 11px; }
+  .mode-toggle  { height: 56px; border-radius: 18px; }
+  .mode-ic { width: 24px; height: 24px; }
+  .mode-ic--moon { left: 18px; }
+  .mode-ic--sun  { right: 18px; }
+  .mode-orb { width: 38px; height: 38px; left: 10px; }
+  :root[data-theme="light"] .mode-orb { left: calc(100% - 48px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
