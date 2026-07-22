@@ -910,8 +910,26 @@ body {
   .stat-num     { font-size: clamp(22px, 6.4vw, 30px); }
   .stat-cap     { font-size: 10px; }
   .rl-name      { font-size: 9.5px; }
-  .now-title    { font-size: clamp(21px, 6vw, 30px); }
-  .now-sub      { font-size: 11px; }
+  .now-title    { font-size: clamp(28px, 8vw, 38px); }
+  .now-sub      { font-size: 12px; }
+  .card--now .now-body { margin-top: 16px; }   /* clear the "NOW BUILDING" label under the bigger title */
+
+  /* work section nav: one swipeable line instead of a 2+1 wrap.
+     min-width:0 lets the flex items shrink so the row scrolls
+     INSIDE the viewport instead of overflowing the page. */
+  .work-tools { width: 100%; min-width: 0; flex-wrap: nowrap; }
+  .work-nav {
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 2px 3px;
+    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
+            mask-image: linear-gradient(90deg, #000 86%, transparent);
+  }
+  .work-nav::-webkit-scrollbar { display: none; }
+  .work-nav a { flex: none; white-space: nowrap; }
   .mode-toggle  { height: 56px; border-radius: 18px; }
   .mode-ic { width: 24px; height: 24px; }
   .mode-ic--moon { left: 18px; }
