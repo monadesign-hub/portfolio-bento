@@ -911,7 +911,7 @@ body {
   .stat-cap     { font-size: 10px; }
   .rl-name      { font-size: 9.5px; }
   .now-title    { font-size: clamp(20px, 7.2vw, 28px); white-space: nowrap; text-align: center; }
-  .now-sub      { font-size: 12px; text-align: center; }
+  .now-sub      { font-size: clamp(12.5px, 4.5vw, 17.5px); text-align: center; }  /* matches title width (title is 7.2vw; 4.5vw keeps same length) */
   .card--now .now-body { justify-content: center; }   /* center the title in the card */
 
   /* work section nav: one swipeable line instead of a 2+1 wrap.
