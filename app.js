@@ -124,7 +124,7 @@
       "dock.dashboard": "个人简介", "dock.work": "作品",
       "launch.poster": "哈佛大学活动海报",
       "launch.moma": "MoMA 艺术导览 — 互动艺术史",
-      "launch.mhouse": "Chowbus — 葡萄酒与烈酒电商",
+      "launch.mhouse": "Chowbus 电商网站",
       "launch.health": "心理健康 — 心理咨询预约应用",
       "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
     },
