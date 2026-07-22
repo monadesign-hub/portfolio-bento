@@ -417,4 +417,27 @@
     cards.forEach(c => c.classList.toggle("is-hidden", f !== "all" && c.dataset.cat !== f));
   }));
 
+  /* ---------- reliable mobile autoplay for feature / launch videos ----------
+     Mobile Safari decides autoplay at page load, so videos that begin
+     off-screen frequently never start, and it also limits how many videos
+     play at once. Kick each one when it scrolls into view (pausing when it
+     leaves keeps concurrent playback within those limits). */
+  const featVideos = $$("video.wf-img, video.launch-img");
+  if (featVideos.length) {
+    featVideos.forEach(v => {
+      v.muted = true; v.setAttribute("muted", "");
+      v.playsInline = true; v.setAttribute("playsinline", "");
+      v.setAttribute("webkit-playsinline", "");
+    });
+    const kick = v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    if ("IntersectionObserver" in window) {
+      const vio = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) kick(e.target); else e.target.pause(); });
+      }, { threshold: 0.2 });
+      featVideos.forEach(v => vio.observe(v));
+    } else {
+      featVideos.forEach(kick);
+    }
+  }
+
 })();
