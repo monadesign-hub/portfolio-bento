@@ -467,7 +467,7 @@ body {
 .now-sub {
   position: relative; z-index: 2;
   font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
-  font-size: 20px; letter-spacing: 0;
+  font-size: clamp(13.5px, 1.65vw, 22px); letter-spacing: 0; white-space: nowrap;   /* matches title width (title 2.7vw x ~0.61), one line like the title */
   background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
   background-size: 220% auto;
   -webkit-background-clip: text; background-clip: text;
