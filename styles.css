@@ -404,17 +404,15 @@ body {
 .mode-orb {
   position: absolute; z-index: 2; top: 50%; left: 11px; transform: translateY(-50%);
   width: 44px; height: 44px; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fdfdff, #cdced4);
+  background: #e9eaef;
   -webkit-mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
           mask: radial-gradient(circle at 70% 30%, transparent 0 47%, #000 48%);
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
   transition: left .55s var(--spring), background .5s var(--ease);
 }
 :root[data-theme="light"] .mode-orb {
   left: calc(100% - 55px);
-  background: radial-gradient(circle at 34% 28%, #fff, var(--accent-2) 90%);
+  background: var(--accent-2);
   -webkit-mask: none; mask: none;                     /* full disc = sun */
-  filter: drop-shadow(0 1px 4px rgba(90,150,255,.45));
 }
 /* hide whichever icon sits under the thumb */
 :root[data-theme="dark"]  .mode-ic--moon { opacity: 0; }
