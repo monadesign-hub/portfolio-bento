@@ -390,11 +390,13 @@ body {
 /* sun / moon icons on the track */
 .mode-ic {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 28px; height: 28px; color: var(--muted); pointer-events: none; z-index: 1;
+  width: 38px; height: 38px; color: var(--muted); pointer-events: none; z-index: 1;
   transition: color .5s var(--ease);
 }
-.mode-ic--moon { left: 22px; }
-.mode-ic--sun  { right: 22px; }
+/* icon centers sit exactly where the orb rests (33px from each edge);
+   the crescent glyph fills less of its viewBox, so it gets a larger box */
+.mode-ic--moon { left: 12px; width: 42px; height: 42px; }
+.mode-ic--sun  { right: 14px; }
 /* the visible (destination) icon reads brighter */
 :root[data-theme="dark"]  .mode-ic--sun  { color: color-mix(in srgb, var(--accent-2) 55%, #fff); }
 :root[data-theme="light"] .mode-ic--moon { color: color-mix(in srgb, var(--accent) 60%, var(--text)); }
@@ -931,9 +933,9 @@ body {
   .work-nav::-webkit-scrollbar { display: none; }
   .work-nav a { flex: none; white-space: nowrap; }
   .mode-toggle  { height: 56px; border-radius: 18px; }
-  .mode-ic { width: 24px; height: 24px; }
-  .mode-ic--moon { left: 18px; }
-  .mode-ic--sun  { right: 18px; }
+  .mode-ic { width: 32px; height: 32px; }
+  .mode-ic--moon { left: 11px; width: 36px; height: 36px; }
+  .mode-ic--sun  { right: 13px; }
   .mode-orb { width: 38px; height: 38px; left: 10px; }
   :root[data-theme="light"] .mode-orb { left: calc(100% - 48px); }
 }
