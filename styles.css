@@ -387,6 +387,12 @@ body {
   position: relative; cursor: pointer; overflow: hidden;
   transition: background .5s var(--ease);
 }
+/* suppress the default blue ring after mouse clicks; keep one for keyboard nav */
+.mode-toggle:focus { outline: none; }
+.mode-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 3px;
+}
 /* sun / moon icons on the track */
 .mode-ic {
   position: absolute; top: 50%; transform: translateY(-50%);
