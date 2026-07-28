@@ -398,7 +398,9 @@ body {
 .mode-ic--moon { left: 12px; width: 42px; height: 42px; }
 .mode-ic--sun  { right: 14px; }
 /* the visible (destination) icon reads brighter */
-:root[data-theme="dark"]  .mode-ic--sun  { color: color-mix(in srgb, var(--accent-2) 55%, #fff); }
+:root[data-theme="dark"]  .mode-ic--sun  {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent-2) 65%, transparent));
+}
 :root[data-theme="light"] .mode-ic--moon { color: color-mix(in srgb, var(--accent) 60%, var(--text)); }
 /* crescent-moon thumb */
 .mode-orb {
