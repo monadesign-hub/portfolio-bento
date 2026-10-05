@@ -509,8 +509,8 @@ body {
 .marquee-track .logo[alt="Harvard"]    { height: 42px; }
 .marquee-track .logo[alt="BMO"]        { height: 50px; }
 .marquee-track .logo[alt="BNY"]        { height: 32px; }
-.marquee-track .logo[alt="Nationwide"] { height: 64px; }
-.marquee-track .logo[alt="TD Bank"]    { height: 53px; }
+.marquee-track .logo[alt="Nationwide"] { height: 76px; }
+.marquee-track .logo[alt="TD Bank"]    { height: 68px; }
 .marquee-track .logo[alt="Supernova"]  { height: 60px; }
 .marquee-track .logo[alt="Adecco Group"] { height: 66px; }
 :root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .72; }
