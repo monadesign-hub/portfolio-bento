@@ -512,6 +512,7 @@ body {
 .marquee-track .logo[alt="Nationwide"] { height: 47px; }
 .marquee-track .logo[alt="TD Bank"]    { height: 53px; }
 .marquee-track .logo[alt="Supernova"]  { height: 60px; }
+.marquee-track .logo[alt="Adecco Group"] { height: 52px; }
 :root[data-theme="light"] .marquee-track .logo { filter: brightness(0); opacity: .72; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track .logo:hover { opacity: 1; }
