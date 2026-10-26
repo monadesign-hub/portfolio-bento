@@ -546,13 +546,10 @@ body {
 }
 .now-sub {
   position: relative; z-index: 2;
-  font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
-  font-size: clamp(14.5px, 1.85vw, 25px); letter-spacing: 0; white-space: nowrap;   /* matches title width (title 2.7vw x ~0.61), one line like the title */
-  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
-  background-size: 220% auto;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  animation: monaFlow 9s linear infinite;
+  font-family: var(--font-ui); font-style: normal; font-weight: 500;
+  font-size: clamp(12.5px, 1.1vw, 15.5px); letter-spacing: .01em;
+  white-space: nowrap; text-align: center;
+  color: var(--text); -webkit-text-fill-color: currentColor;
 }
 
 /* ---------- clients marquee ---------- */
@@ -1055,7 +1052,6 @@ body {
 :root[data-theme="light"] .logotype,
 :root[data-theme="light"] .stat-num,
 :root[data-theme="light"] .now-title,
-:root[data-theme="light"] .now-sub,
 :root[data-theme="light"] .wg-title {
   background-image: linear-gradient(100deg, #1e56cf, #5a44b8, #2159d6, #1e56cf);
 }
