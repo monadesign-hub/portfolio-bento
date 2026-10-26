@@ -12,7 +12,7 @@
   --ease: cubic-bezier(.22,.61,.36,1);
   --spring: cubic-bezier(.34,1.56,.64,1);
   --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
-  --blur: 22px;
+  --blur: 30px;
 }
 
 :root[data-theme="dark"] {
@@ -27,9 +27,12 @@
   /* liquid glass */
   --glass-bg: rgba(28,28,33,.46);
   --glass-bg-hi: rgba(40,40,47,.6);
-  --glass-border: rgba(255,255,255,.14);
+  --glass-border: rgba(255,255,255,.2);
   --glass-spec: rgba(255,255,255,.55);   /* top-edge specular */
-  --glass-sheen: rgba(255,255,255,.14);  /* cursor sheen */
+  --glass-sheen: rgba(255,255,255,.16);  /* cursor sheen */
+  --glass-bloom: rgba(255,255,255,.07); /* top-edge light bloom */
+  --glass-bright: 1.06;
+  --glass-catch: rgba(170,205,255,.085); /* corner light-catch */
   --shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 -1px 1px rgba(0,0,0,.4) inset, 0 24px 50px -22px rgba(0,0,0,.85);
   --aurora-a: .3; --aurora-b: .2;
 }
@@ -49,6 +52,9 @@
   --glass-border: rgba(255,255,255,.75);
   --glass-spec: rgba(255,255,255,.95);
   --glass-sheen: rgba(255,255,255,.6);
+  --glass-bloom: rgba(255,255,255,.5);
+  --glass-bright: 1.02;
+  --glass-catch: rgba(255,255,255,.55);
   --shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 -1px 1px rgba(0,0,0,.06) inset, 0 24px 46px -24px rgba(70,50,30,.3);
   --aurora-a: .5; --aurora-b: .5;
 }
@@ -167,14 +173,18 @@ body {
 
 .card {
   position: relative;
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  /* light collects along the top edge, the way iOS glass does */
+  background:
+    radial-gradient(120% 80% at 8% -10%, var(--glass-catch), transparent 58%),
+    linear-gradient(180deg, var(--glass-bloom), transparent 42%),
+    var(--glass-bg);
+  backdrop-filter: blur(var(--blur)) saturate(200%) brightness(var(--glass-bright));
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(200%) brightness(var(--glass-bright));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   padding: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), inset 0 0 0 .5px rgba(255,255,255,.07);
   transition: transform .5s var(--spring), box-shadow .5s var(--ease), background .5s var(--ease);
   opacity: 0;
   translate: 0 14px;
@@ -183,15 +193,28 @@ body {
 }
 @keyframes cardIn { to { opacity: 1; translate: 0 0; } }
 
+/* iOS uses continuous curvature, not a circular arc */
+@supports (corner-shape: superellipse(4)) {
+  .card { corner-shape: superellipse(4); }
+}
+
 /* specular edge — bright top-left, fading around the rim */
 .card::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit;
-  padding: 1px; pointer-events: none; z-index: 3;
-  background: linear-gradient(135deg,
+  padding: 1.7px; pointer-events: none; z-index: 3;
+  /* real glass disperses light: the lit edge picks up a cool tint at the top
+     and a violet one where it bends away, instead of one flat white hairline */
+  background:
+    radial-gradient(70% 46% at 16% -4%, var(--glass-spec), transparent 72%),
+    linear-gradient(135deg,
       var(--glass-spec) 0%,
-      transparent 32%,
-      transparent 66%,
-      color-mix(in srgb, var(--glass-spec) 45%, transparent) 100%);
+      color-mix(in srgb, var(--accent-2) 55%, var(--glass-spec)) 9%,
+      color-mix(in srgb, var(--glass-spec) 26%, transparent) 20%,
+      transparent 38%,
+      transparent 56%,
+      color-mix(in srgb, var(--accent-3) 45%, var(--glass-spec)) 78%,
+      color-mix(in srgb, var(--glass-spec) 70%, transparent) 90%,
+      color-mix(in srgb, var(--glass-spec) 22%, transparent) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
@@ -204,7 +227,14 @@ body {
     radial-gradient(220px 220px at var(--mx, 50%) var(--my, 50%), var(--glass-sheen), transparent 60%),
     radial-gradient(130% 92% at 50% 122%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 62%);
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow), 0 30px 60px -28px rgba(0,0,0,.6); }
+.card:hover {
+  transform: translateY(-4px);
+  background:
+    radial-gradient(120% 80% at 8% -10%, var(--glass-catch), transparent 58%),
+    linear-gradient(180deg, var(--glass-bloom), transparent 42%),
+    var(--glass-bg-hi);
+  box-shadow: var(--shadow), inset 0 0 0 .5px rgba(255,255,255,.07), 0 30px 60px -28px rgba(0,0,0,.6);
+}
 .card:hover::after { opacity: 1; }
 .card > * { position: relative; z-index: 2; }
 
@@ -759,9 +789,11 @@ body {
   padding: 1px; pointer-events: none; z-index: 4;
   background: linear-gradient(135deg,
       var(--glass-spec) 0%,
-      transparent 32%,
-      transparent 66%,
-      color-mix(in srgb, var(--glass-spec) 45%, transparent) 100%);
+      color-mix(in srgb, var(--glass-spec) 30%, transparent) 14%,
+      transparent 34%,
+      transparent 58%,
+      color-mix(in srgb, var(--glass-spec) 62%, transparent) 84%,
+      color-mix(in srgb, var(--glass-spec) 28%, transparent) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
@@ -953,7 +985,8 @@ body {
   .lang-toggle--fixed .lang-seg { padding: 5px 10px; font-size: 12px; }
   .work-tools { gap: 10px; }
   .now-title { white-space: normal; }
-  .intro-line { overflow-wrap: anywhere; }
+  .intro-line { overflow-wrap: anywhere; padding-bottom: .06em; }
+  .now-title { padding-bottom: .08em; }
   .stage { padding: 16px 12px 96px; }
 
   /* ---------- Apple-style compact bento (mobile) ----------
@@ -968,8 +1001,9 @@ body {
   .card--intro   { grid-column: 1 / -1 !important; grid-row: auto / span 4 !important; order: 1; padding: 18px; }
   .card--globe   { order: 2; }
   .card--mode    { order: 3; }
-  .card--ai      { order: 4; }
-  .card--flora   { order: 5; }
+  /* six stat tiles + a 26-week heatmap cannot live in a half-width tile */
+  .card--ai      { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; order: 4; }
+  .card--flora   { grid-column: 1 / -1 !important; grid-row: auto / span 4 !important; order: 5; }
   .card--stats   { order: 6; }
   .card--roles   { order: 7; }
   .card--contact { grid-column: 1 / -1 !important; order: 8; }
@@ -981,10 +1015,18 @@ body {
 
   /* re-fit widget internals so the paired tiles never clip */
   .intro-line   { font-size: clamp(25px, 6.6vw, 34px); }
-  .intro-blurb  { font-size: 12.5px; }
-  .globe-city   { font-size: 11px; white-space: normal; text-align: center; }
-  .logotype     { font-size: clamp(48px, 14vw, 74px); }
-  .logo-caption { font-size: 11.5px; }
+  .intro-caption { font-size: 12.5px; line-height: 1.5; }
+  .globe-city   { font-size: clamp(14px, 4.4vw, 18px); white-space: normal; text-align: center; }
+  .globe { position: static; transform: none; width: 100%; max-width: 150px; margin: 2px auto 4px; }
+  .card--globe { justify-content: center; }
+  .globe-foot { font-size: 9.5px; }
+  .ai-stat b { font-size: clamp(21px, 6.6vw, 30px); }
+  .ai-stat b.sm { font-size: clamp(17px, 5.2vw, 23px); }
+  .ai-stat span { font-size: 10px; }
+  .ai-heat { height: 58px; }
+  .logotype     { font-size: clamp(48px, 13vw, 70px); padding-bottom: .08em; }
+  .card--intro .logotype { font-size: clamp(48px, 13vw, 70px); line-height: 1.14; margin: 2px 0 0; transform: none; }
+
   .stat-num     { font-size: clamp(22px, 6.4vw, 30px); }
   .stat-cap     { font-size: 10px; }
   .rl-name      { font-size: 9.5px; }
