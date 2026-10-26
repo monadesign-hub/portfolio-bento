@@ -145,6 +145,11 @@ body {
   grid-auto-rows: 92px;
   gap: var(--gap);
 }
+/* band C (now / mode / clients) carries less content than A and B, so it gets
+   shorter rows — only above the responsive breakpoints, which retile entirely */
+@media (min-width: 901px) {
+  .bento { grid-template-rows: repeat(6, 92px) repeat(2, 72px); }
+}
 /* explicit tiling — three clean bands, no holes
    A(r1-3): intro c1-6 | globe c7-9 | contact c10-12
    B(r4-6): ai c1-5   | flora c5-7 | stats c7-9 | radar c10-12
@@ -248,9 +253,14 @@ body {
 .globe { width: 100%; max-width: 184px; aspect-ratio: 1 / 1; height: auto; margin: auto; }
 .globe-foot { width: 100%; margin-top: 10px; }
 .globe-city {
-  font-size: clamp(15px, 1.35vw, 19px); color: var(--accent); font-weight: 500; letter-spacing: .01em;
+  font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
+  font-size: clamp(19px, 1.7vw, 25px); letter-spacing: 0; white-space: nowrap;
   margin-top: -2px;
-  text-shadow: 0 0 16px color-mix(in srgb, var(--accent) 45%, transparent);
+  background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-3), var(--accent-2), #cdd8ff);
+  background-size: 220% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: monaFlow 8s linear infinite;
 }
 
 /* ---------- contact ---------- */
@@ -314,7 +324,7 @@ body {
 /* the logotype now lives in the intro card — smaller, and it shares the
    vertical slack with the headline rather than dominating it */
 /* bigger, and line-height .8 from the shared rule clips the italic g descender */
-.card--intro .logotype { font-size: clamp(54px, 6.4vw, 96px); line-height: 1; margin: auto 0 0; padding-bottom: .04em; }
+.card--intro .logotype { font-size: clamp(54px, 6.4vw, 96px); line-height: 1; margin: auto 0 2px; padding-bottom: .04em; transform: translateY(-2px); }
 .logo-caption { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ---------- AI pair-coding (stats + activity heatmap) ---------- */
@@ -1012,7 +1022,6 @@ body {
    ============================================================ */
 /* accent-colored text → ink blue #1e56cf (6.4:1 white / 5.2:1 beige) */
 :root[data-theme="light"] .tw,
-:root[data-theme="light"] .globe-city,
 :root[data-theme="light"] .contact-list a:hover,
 :root[data-theme="light"] .copy-email:hover,
 :root[data-theme="light"] .copy-ok,
@@ -1031,6 +1040,7 @@ body {
 
 /* gradient (background-clip) text → dark blue→purple gradient, every stop >=4.5:1 */
 :root[data-theme="light"] .ai-stat b,
+:root[data-theme="light"] .globe-city,
 :root[data-theme="light"] .now-arrow,
 :root[data-theme="light"] .logotype,
 :root[data-theme="light"] .stat-num,

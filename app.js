@@ -17,7 +17,7 @@
   /* ---------- bilingual dictionary (EN / 中文) ---------- */
   const I18N = {
     en: {
-      "role": "Product Design Engineer",
+      "role": "Senior AI Product Design Engineer",
       "intro.prefix": "I design &amp; ship ",
       "label.basedIn": "Based in",
       "globe.city": "San Francisco Bay Area",
@@ -76,7 +76,7 @@
       "tw": ["AI-native products", "fintech systems", "human-AI tools", "design systems"],
     },
     zh: {
-      "role": "产品设计工程师",
+      "role": "高级 AI 产品设计工程师",
       "intro.prefix": "我设计并交付 ",
       "label.basedIn": "所在地",
       "globe.city": "旧金山湾区",
