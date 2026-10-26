@@ -148,7 +148,7 @@ body {
 /* band C (now / mode / clients) carries less content than A and B, so it gets
    shorter rows — only above the responsive breakpoints, which retile entirely */
 @media (min-width: 901px) {
-  .bento { grid-template-rows: repeat(3, 86px) repeat(3, 92px) repeat(2, 90px); }
+  .bento { grid-template-rows: repeat(3, 86px) repeat(3, 92px) repeat(2, 96px); }
 }
 /* explicit tiling — three clean bands, no holes
    A(r1-3): intro c1-6 | globe c7-9 | contact c10-12
