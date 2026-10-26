@@ -329,7 +329,9 @@ body {
 
 /* ---------- AI pair-coding (stats + activity heatmap) ---------- */
 .card--ai { display: flex; flex-direction: column; gap: 12px; }
-.ai-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 10px; margin-top: 4px; }
+/* content-width columns spread edge to edge, so the row reads evenly
+   distributed instead of three left-aligned thirds */
+.ai-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 14px 10px; margin-top: 4px; }
 .ai-stat { display: flex; flex-direction: column; gap: 2px; }
 .ai-stat b {
   font-family: "Instrument Serif", serif; font-weight: 400;
