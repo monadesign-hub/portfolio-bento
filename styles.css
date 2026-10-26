@@ -332,7 +332,7 @@ body {
 /* the logotype now lives in the intro card — smaller, and it shares the
    vertical slack with the headline rather than dominating it */
 /* bigger, and line-height .8 from the shared rule clips the italic g descender */
-.card--intro .logotype { font-size: clamp(54px, 6.4vw, 96px); line-height: 1; margin: auto 0 2px; padding-bottom: .04em; transform: translateY(-2px); }
+.card--intro .logotype { font-size: clamp(49px, 5.8vw, 87px); line-height: 1; margin: auto 0 2px; padding-bottom: .04em; transform: translateY(-2px); }
 .logo-caption { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* ---------- AI pair-coding (stats + activity heatmap) ---------- */
