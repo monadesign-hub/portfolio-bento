@@ -69,7 +69,7 @@
       "launch.moma": "MoMA Art Guide — Interactive Art History",
       "launch.mhouse": "Chowbus — Wine & Spirits E-Commerce",
       "launch.health": "Mental Health — Therapy Booking App",
-      "tw": ["AI-native products", "fintech systems", "human-centered tools", "design systems"],
+      "tw": ["AI-native products", "fintech systems", "human-AI tools", "design systems"],
     },
     zh: {
       "role": "产品设计工程师",
@@ -124,7 +124,7 @@
       "launch.moma": "MoMA 艺术导览 — 互动艺术史",
       "launch.mhouse": "Chowbus 电商网站",
       "launch.health": "心理健康 — 心理咨询预约应用",
-      "tw": ["AI 原生产品", "金融科技系统", "以人为本的工具", "设计系统"],
+      "tw": ["AI 原生产品", "金融科技系统", "人机协作工具", "设计系统"],
     },
   };
   let LANG = params.get("lang") || localStorage.getItem("lang") || "en";
