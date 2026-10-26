@@ -19,7 +19,6 @@
     en: {
       "role": "Product Design Engineer",
       "intro.prefix": "I design &amp; ship ",
-      "intro.blurb": "I bring fintech & AI products to life end-to-end — from research and systems to full-stack vibe-coding. I push boundaries, take risks, and infuse narrative into the work.",
       "label.basedIn": "Based in",
       "globe.city": "San Francisco Bay Area",
       "label.contact": "Contact",
@@ -75,7 +74,6 @@
     zh: {
       "role": "产品设计工程师",
       "intro.prefix": "我设计并交付 ",
-      "intro.blurb": "我端到端地打造金融科技与 AI 产品——从用户研究、系统设计到全栈氛围编码。我勇于突破、敢于冒险，并为作品注入叙事。",
       "label.basedIn": "所在地",
       "globe.city": "旧金山湾区",
       "label.contact": "联系方式",
