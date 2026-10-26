@@ -148,7 +148,7 @@ body {
 /* band C (now / mode / clients) carries less content than A and B, so it gets
    shorter rows — only above the responsive breakpoints, which retile entirely */
 @media (min-width: 901px) {
-  .bento { grid-template-rows: repeat(3, 86px) repeat(3, 92px) repeat(2, 88px); }
+  .bento { grid-template-rows: repeat(3, 86px) repeat(3, 92px) repeat(2, 90px); }
 }
 /* explicit tiling — three clean bands, no holes
    A(r1-3): intro c1-6 | globe c7-9 | contact c10-12
@@ -225,7 +225,7 @@ body {
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .intro-name { font-weight: 600; font-size: 15px; }
-.intro-role { font-size: 15px; font-weight: 500; letter-spacing: .005em; color: var(--accent); }
+.intro-role { font-size: 15px; font-weight: 500; letter-spacing: .005em; color: var(--text); }
 .intro-line {
   font-family: "Instrument Serif", serif;
   font-weight: 400;
@@ -249,8 +249,14 @@ body {
 }
 
 /* ---------- globe ---------- */
-.card--globe { display: flex; flex-direction: column; align-items: center; }
-.globe { width: 100%; max-width: 166px; aspect-ratio: 1 / 1; height: auto; margin: auto; }
+.card--globe { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
+/* the globe is the card: it fills the frame, with the city + clock riding on top */
+.globe {
+  position: absolute; left: 50%; top: 41%; transform: translate(-50%, -50%);
+  width: 100%; max-width: 222px; aspect-ratio: 1 / 1; height: auto;
+  pointer-events: none; z-index: 1;
+}
+.card--globe .globe-city, .card--globe .globe-foot { position: relative; z-index: 2; }
 .globe-foot { width: 100%; margin-top: 10px; }
 .globe-city {
   font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400;
@@ -1024,7 +1030,6 @@ body {
    ============================================================ */
 /* accent-colored text → ink blue #1e56cf (6.4:1 white / 5.2:1 beige) */
 :root[data-theme="light"] .tw,
-:root[data-theme="light"] .intro-role,
 :root[data-theme="light"] .contact-list a:hover,
 :root[data-theme="light"] .copy-email:hover,
 :root[data-theme="light"] .copy-ok,

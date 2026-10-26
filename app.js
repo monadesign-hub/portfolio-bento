@@ -242,6 +242,20 @@
       return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
     };
 
+    // great-circle path between two unit vectors, lifted off the surface
+    function arcPoints(a, b, steps = 34) {
+      const dot = Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+      const om = Math.acos(dot), so = Math.sin(om) || 1e-6, out = [];
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const s1 = Math.sin((1 - t) * om) / so, s2 = Math.sin(t * om) / so;
+        const x = a[0] * s1 + b[0] * s2, y = a[1] * s1 + b[1] * s2, z = a[2] * s1 + b[2] * s2;
+        const lift = 1 + 0.17 * Math.sin(Math.PI * t);
+        out.push([x * lift, y * lift, z * lift]);
+      }
+      return out;
+    }
+
     let rot = params.get("grot") ? parseFloat(params.get("grot")) : 3.1;
     // project a unit-sphere point → {px,py,z} with current spin + fixed tilt
     function project(x, y, z, cosR, sinR, R, cx, cy) {
@@ -304,6 +318,50 @@
       // rim
       ctx.strokeStyle = dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.38)";
       ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.stroke();
+
+      // great-circle arcs from home → each city, with a travelling pulse
+      const home = toXYZ(cities[0].lat, cities[0].lon);
+      for (let i = 1; i < cities.length; i++) {
+        const dst = toXYZ(cities[i].lat, cities[i].lon);
+        const pts = arcPoints(home, dst);
+        let prev = null;
+        for (let k = 0; k < pts.length; k++) {
+          const p = pts[k];
+          const q = project(p[0], p[1], p[2], cosR, sinR, R, cx, cy);
+          if (prev && prev.z > -0.15 && q.z > -0.15) {
+            const depth = Math.max(0, Math.min(prev.z, q.z) + 0.15) / 1.15;
+            ctx.strokeStyle = `rgba(117,168,255,${(dark ? 0.42 : 0.3) * depth})`;
+            ctx.lineWidth = 1.1;
+            ctx.beginPath(); ctx.moveTo(prev.px, prev.py); ctx.lineTo(q.px, q.py); ctx.stroke();
+          }
+          prev = q;
+        }
+        // pulse riding the arc
+        if (!reduce) {
+          const t = ((rot * 0.42 + i * 0.37) % 1 + 1) % 1;
+          const p = pts[Math.min(pts.length - 1, Math.round(t * (pts.length - 1)))];
+          const q = project(p[0], p[1], p[2], cosR, sinR, R, cx, cy);
+          if (q.z > -0.05) {
+            ctx.save(); ctx.shadowColor = "#5FC8FF"; ctx.shadowBlur = 10;
+            ctx.fillStyle = `rgba(150,215,255,${0.85 * Math.max(0, Math.min(1, (q.z + 0.05) / 0.3))})`;
+            ctx.beginPath(); ctx.arc(q.px, q.py, 2, 0, 7); ctx.fill(); ctx.restore();
+          }
+        }
+      }
+
+      // tilted orbit ring + satellite
+      ctx.save();
+      ctx.translate(cx, cy); ctx.rotate(-0.34);
+      ctx.strokeStyle = dark ? "rgba(158,140,255,0.3)" : "rgba(90,68,184,0.26)";
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.ellipse(0, 0, R * 1.16, R * 0.3, 0, 0, 7); ctx.stroke();
+      const sa = reduce ? 0.6 : rot * 1.35;
+      const sx = Math.cos(sa) * R * 1.16, sy = Math.sin(sa) * R * 0.3;
+      ctx.save(); ctx.shadowColor = "#9E8CFF"; ctx.shadowBlur = 12;
+      ctx.fillStyle = dark ? "rgba(190,178,255,0.95)" : "rgba(90,68,184,0.9)";
+      ctx.beginPath(); ctx.arc(sx, sy, 2.6, 0, 7); ctx.fill();
+      ctx.restore();
+      ctx.restore();
 
       // city markers + labels (SF = branding-blue highlight)
       ctx.textBaseline = "middle";
