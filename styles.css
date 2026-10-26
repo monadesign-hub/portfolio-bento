@@ -148,7 +148,7 @@ body {
 /* band C (now / mode / clients) carries less content than A and B, so it gets
    shorter rows — only above the responsive breakpoints, which retile entirely */
 @media (min-width: 901px) {
-  .bento { grid-template-rows: repeat(6, 92px) repeat(2, 72px); }
+  .bento { grid-template-rows: repeat(6, 92px) repeat(2, 83px); }
 }
 /* explicit tiling — three clean bands, no holes
    A(r1-3): intro c1-6 | globe c7-9 | contact c10-12
@@ -333,12 +333,12 @@ body {
 .ai-stat { display: flex; flex-direction: column; gap: 2px; }
 .ai-stat b {
   font-family: "Instrument Serif", serif; font-weight: 400;
-  font-size: clamp(26px, 2.6vw, 36px); line-height: 1;
+  font-size: clamp(30px, 3.1vw, 43px); line-height: 1;
   background: linear-gradient(100deg, #cdd8ff, var(--accent), var(--accent-2));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
 }
-.ai-stat b.sm { font-size: clamp(20px, 2vw, 28px); }
+.ai-stat b.sm { font-size: clamp(23px, 2.3vw, 32px); }
 .ai-stat span { font-size: 11.5px; color: var(--faint); letter-spacing: .01em; }
 
 /* heatmap — one hue, light→dark (sequential); empty days stay surface-level */
@@ -346,7 +346,7 @@ body {
   display: grid; grid-auto-flow: column;
   grid-template-rows: repeat(7, 1fr);
   grid-auto-columns: 1fr;
-  gap: 3px; margin: auto 0; width: 100%; height: 92px;
+  gap: 3px; margin: auto 0; width: 100%; height: 70px;
 }
 .ai-heat .hc {
   border-radius: 2px;
