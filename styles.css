@@ -546,8 +546,8 @@ body {
 }
 .now-sub {
   position: relative; z-index: 2;
-  font-family: var(--font-ui); font-style: normal; font-weight: 500;
-  font-size: clamp(12.5px, 1.1vw, 15.5px); letter-spacing: .01em;
+  font-family: "Instrument Serif", serif; font-style: normal; font-weight: 400;
+  font-size: clamp(15px, 1.4vw, 20px); letter-spacing: .005em;
   white-space: nowrap; text-align: center;
   color: var(--text); -webkit-text-fill-color: currentColor;
 }
