@@ -234,7 +234,7 @@ body {
   letter-spacing: -.01em;
   margin-top: auto;
 }
-.tw { color: var(--accent); font-style: italic; }
+.tw { color: var(--accent); font-style: italic; margin-left: .16em; }
 .caret {
   display: inline-block; width: 2px; height: .85em;
   background: var(--accent); margin-left: 2px;
