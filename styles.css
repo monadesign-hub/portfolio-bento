@@ -1000,9 +1000,9 @@ body {
   .globe { position: static; transform: none; width: 100%; max-width: 150px; margin: 2px auto 4px; }
   .card--globe { justify-content: center; }
   .globe-foot { font-size: 9.5px; }
-  .ai-stat b { font-size: clamp(21px, 6.6vw, 30px); }
-  .ai-stat b.sm { font-size: clamp(17px, 5.2vw, 23px); }
-  .ai-stat span { font-size: 10px; }
+  .ai-stat b { font-size: clamp(24px, 7.4vw, 34px); }
+  .ai-stat b.sm { font-size: clamp(19px, 5.9vw, 27px); }
+  .ai-stat span { font-size: 10.5px; }
   .ai-heat { height: 58px; }
   .logotype     { font-size: clamp(40px, 11vw, 58px); padding-bottom: .08em; }
   .card--intro .logotype { font-size: clamp(40px, 11vw, 58px); line-height: 1.1; margin: 0; transform: none; }
