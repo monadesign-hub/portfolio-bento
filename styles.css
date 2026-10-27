@@ -193,17 +193,13 @@ body {
      inset:0 would stop at the padding box and read as a second hairline */
   inset: 0; border-radius: inherit;
   padding: var(--card-bw);
-  /* conic so the light travels around the rim instead of across it */
-  background: conic-gradient(from 200deg at 50% 50%,
-      var(--glass-spec) 0deg,
-      color-mix(in srgb, var(--glass-spec) 62%, transparent) 26deg,
-      var(--glass-edge) 74deg,
-      color-mix(in srgb, var(--glass-spec) 30%, transparent) 128deg,
-      color-mix(in srgb, var(--glass-spec) 72%, transparent) 170deg,
-      color-mix(in srgb, var(--glass-spec) 34%, transparent) 212deg,
-      var(--glass-edge) 262deg,
-      color-mix(in srgb, var(--glass-spec) 45%, transparent) 310deg,
-      var(--glass-spec) 360deg);
+  background: linear-gradient(135deg,
+      var(--glass-spec) 0%,
+      color-mix(in srgb, var(--glass-spec) 55%, transparent) 16%,
+      var(--glass-edge) 38%,
+      var(--glass-edge) 60%,
+      color-mix(in srgb, var(--glass-spec) 50%, transparent) 86%,
+      var(--glass-edge) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
