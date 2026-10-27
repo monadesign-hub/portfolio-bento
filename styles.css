@@ -170,7 +170,7 @@ body {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
-  border: 1px solid var(--glass-border);
+  border: 1.2px solid var(--glass-border);
   border-radius: var(--radius);
   padding: 18px;
   overflow: hidden;
