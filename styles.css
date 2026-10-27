@@ -29,6 +29,7 @@
   --glass-bg: rgba(28,28,33,.46);
   --glass-bg-hi: rgba(40,40,47,.6);
   --glass-border: rgba(255,255,255,.14);
+  --glass-edge: rgba(255,255,255,.13);  /* base tone of the single edge */
   --glass-spec: rgba(255,255,255,.55);   /* top-edge specular */
   --glass-sheen: rgba(255,255,255,.14);  /* cursor sheen */
   --shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 -1px 1px rgba(0,0,0,.4) inset, 0 24px 50px -22px rgba(0,0,0,.85);
@@ -48,6 +49,7 @@
   --glass-bg: rgba(255,255,255,.5);
   --glass-bg-hi: rgba(255,255,255,.68);
   --glass-border: rgba(255,255,255,.75);
+  --glass-edge: rgba(255,255,255,.7);
   --glass-spec: rgba(255,255,255,.95);
   --glass-sheen: rgba(255,255,255,.6);
   --shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 -1px 1px rgba(0,0,0,.06) inset, 0 24px 46px -24px rgba(70,50,30,.3);
@@ -171,7 +173,7 @@ body {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
-  border: var(--card-bw) solid var(--glass-border);
+  border: 0;
   border-radius: var(--radius);
   padding: 18px;
   overflow: hidden;
@@ -189,14 +191,15 @@ body {
   content: ""; position: absolute; z-index: 3; pointer-events: none;
   /* expand over the border box so the specular paints ON the border edge —
      inset:0 would stop at the padding box and read as a second hairline */
-  inset: calc(-1 * var(--card-bw));
-  border-radius: calc(var(--radius) + var(--card-bw));
+  inset: 0; border-radius: inherit;
   padding: var(--card-bw);
   background: linear-gradient(135deg,
       var(--glass-spec) 0%,
-      transparent 32%,
-      transparent 66%,
-      color-mix(in srgb, var(--glass-spec) 45%, transparent) 100%);
+      color-mix(in srgb, var(--glass-spec) 55%, transparent) 16%,
+      var(--glass-edge) 38%,
+      var(--glass-edge) 60%,
+      color-mix(in srgb, var(--glass-spec) 50%, transparent) 86%,
+      var(--glass-edge) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
@@ -764,9 +767,11 @@ body {
   padding: 1px; pointer-events: none; z-index: 4;
   background: linear-gradient(135deg,
       var(--glass-spec) 0%,
-      transparent 32%,
-      transparent 66%,
-      color-mix(in srgb, var(--glass-spec) 45%, transparent) 100%);
+      color-mix(in srgb, var(--glass-spec) 55%, transparent) 16%,
+      var(--glass-edge) 38%,
+      var(--glass-edge) 60%,
+      color-mix(in srgb, var(--glass-spec) 50%, transparent) 86%,
+      var(--glass-edge) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
