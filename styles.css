@@ -980,7 +980,9 @@ body {
   .card--globe   { order: 2; }
   .card--mode    { order: 3; }
   /* six stat tiles + a 26-week heatmap cannot live in a half-width tile */
-  .card--ai      { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; order: 4; }
+  /* match the desktop card's roomier inset — the mobile .card rule above
+     resets padding to 15px, so restate it here */
+  .card--ai      { grid-column: 1 / -1 !important; grid-row: auto / span 3 !important; order: 4; padding: 18px 20px 16px; }
   .card--flora   { grid-column: 1 / -1 !important; grid-row: auto / span 4 !important; order: 5; }
   .card--stats   { order: 6; }
   .card--roles   { order: 7; }
