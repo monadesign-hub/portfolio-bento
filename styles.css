@@ -8,7 +8,7 @@
   --accent-2: #5FC8FF;
   --accent-3: #9E8CFF;
   --radius: 24px;
-  --card-bw: 1.2px;
+  --card-bw: 1.6px;
   --gap: 12px;
   --ease: cubic-bezier(.22,.61,.36,1);
   --spring: cubic-bezier(.34,1.56,.64,1);
@@ -29,7 +29,7 @@
   --glass-bg: rgba(28,28,33,.46);
   --glass-bg-hi: rgba(40,40,47,.6);
   --glass-border: rgba(255,255,255,.14);
-  --glass-edge: rgba(255,255,255,.13);  /* base tone of the single edge */
+  --glass-edge: rgba(255,255,255,.22);  /* base tone of the single edge */
   --glass-spec: rgba(255,255,255,.55);   /* top-edge specular */
   --glass-sheen: rgba(255,255,255,.14);  /* cursor sheen */
   --shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 -1px 1px rgba(0,0,0,.4) inset, 0 24px 50px -22px rgba(0,0,0,.85);
