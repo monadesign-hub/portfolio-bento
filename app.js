@@ -17,7 +17,7 @@
   /* ---------- bilingual dictionary (EN / 中文) ---------- */
   const I18N = {
     en: {
-      "role": "Senior AI Product Design Engineer",
+      "role": "Sr. AI Product Design Engineer",
       "intro.prefix": "I design &amp; ship ",
       "label.basedIn": "Based in",
       "globe.city": "San Francisco Bay Area",
