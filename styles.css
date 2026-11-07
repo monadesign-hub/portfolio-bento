@@ -232,8 +232,8 @@ body {
   background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
 }
-.intro-name { font-weight: 600; font-size: 15px; }
-.intro-role { font-size: 15px; font-weight: 500; letter-spacing: .005em; color: var(--text); }
+.intro-name { font-weight: 500; font-size: 15px; }
+.intro-role { font-size: 15px; font-weight: 400; letter-spacing: .005em; color: var(--text); }
 .intro-line {
   font-family: "Instrument Serif", serif;
   font-weight: 400;
