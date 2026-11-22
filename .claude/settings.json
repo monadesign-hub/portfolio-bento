@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git branch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git ls-remote:*)",
+      "Bash(git archive:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(du:*)",
+      "Bash(python3 -m http.server:*)",
+      "Bash(node:*)",
+      "mcp__Vercel__list_deployments",
+      "mcp__Vercel__get_project",
+      "mcp__Vercel__list_project_domains",
+      "mcp__Vercel__web_fetch_vercel_url"
+    ]
+  }
+}
